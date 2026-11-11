@@ -51,7 +51,7 @@
 \urladdr{https://orcid.org/0000-0003-0466-750X}
 
 \begin{abstract}
-We prove Sen's conjecture that single-centred rotating black holes in type~IIB string theory on $K3\times S^1$ have a positive index at fixed angular momentum, for every charge of discriminant at most $1000$ and for all charges whose D1--D5 product is $1$, $2$, $3$, $5$, $7$, $11$ or $13$.
+We prove Sen's conjecture that single-centred rotating black holes in type~IIB string theory on $K3\times S^1$ have a positive index at fixed angular momentum, for every charge of discriminant at most $7200$ and for all charges whose D1--D5 product is $1$ or a prime power below $32$.
 
 \medskip\noindent\textbf{Keywords:} black hole microstates; mock Jacobi forms; Rademacher expansion.
 
@@ -66,7 +66,7 @@ Strominger and Vafa explained the entropy of a five-dimensional supersymmetric b
 
 The integers obtained in this way count all bound states, not only the black hole. Some of them are bound states of two black holes held apart by electromagnetic forces, and some are modes that live outside the horizon. Sen showed that once both are removed, what remains is the index of the horizon itself, and he argued that this index must be positive: a supersymmetric single-centred black hole in four dimensions is spherically symmetric, so its microstates carry zero angular momentum and contribute to the index with the same sign \cite{Sen11,DGMS11}. For the rotating black holes of five dimensions he defined the index at fixed angular momentum, which removes the multiplicities coming from rotations of the horizon, and conjectured that it too is positive \cite{Sen12}. Bringmann and Murthy turned these predictions into precise statements about Fourier coefficients and proved them when the D1--D5 product $m=Q_1Q_5$ equals $1$ or $2$ \cite{BM13}.\footnote{Bringmann and Murthy give two proofs for $m=2$, one by the circle method and one by explicit identities between theta functions, Eisenstein series and class numbers \cite[\S\S4--6]{BM13}. They state the fixed angular momentum conjecture in \cite[\S2.3]{BM13}, attributing it to \cite{Sen12}.}
 
-This paper proves the conjecture at fixed angular momentum for every charge of discriminant at most $1000$, and for all charges when $m\in\{1,2,3,5,7,11,13\}$.\enlargethispage{6pt}
+This paper proves the conjecture at fixed angular momentum for every charge of discriminant at most $7200$, and for all charges when $m$ is $1$ or one of the seventeen prime powers below $32$.\enlargethispage{6pt}
 
 \subsection*{The indices}
 Throughout, $\tau$ lies in the upper half-plane $\HH$, $z\in\CC$, $y=\operatorname{Im}\tau$, $\e(x)=e^{2\pi ix}$, $q=\e(\tau)$ and $\zeta=\e(z)$. Let $\Delta=q\prod_{n\ge1}(1-q^n)^{24}$, and let $\pf(k)$ be the number of partitions of $k$ into parts of $24$ colours, so that $\Delta^{-1}=\sum_{k\ge0}\pf(k)q^{k-1}$. Let
@@ -102,10 +102,10 @@ d(n,J,m)=\dstar(n,J,m)-\dstar(n,J+2,m),\qquad J\ge0 .
 The conjecture of Sen is that $d(n,J,m)>0$ whenever $4mn-J^2>0$; it contains the four-dimensional statement $\dstar>0$ as the special case in which the second term vanishes.
 
 \subsection*{Results}
-Let $\Mset=\{1,2,3,5,7,11,13\}$.
+Let $\Mset=\{1,2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31\}$ be the set consisting of $1$ and the prime powers below $32$.
 
 \begin{mainthm}[Charges of small discriminant]\label{thm:A}
-For every charge with $0<4mn-l^2\le1000$ the single-centred index $\dstar(n,l,m)$ is positive, and for every five-dimensional charge with $0<4mn-J^2\le1000$ the index $d(n,J,m)$ at fixed angular momentum is positive.
+For every charge with $0<4mn-l^2\le7200$ the single-centred index $\dstar(n,l,m)$ is positive, and for every five-dimensional charge with $0<4mn-J^2\le7200$ the index $d(n,J,m)$ at fixed angular momentum is positive.
 \end{mainthm}
 
 \begin{mainthm}[Fixed angular momentum]\label{thm:B}
@@ -120,26 +120,30 @@ The proof of Theorem~\ref{thm:B} needs an exact description of the mock modular 
 \begin{equation}\label{eq:HVm}
 h_m(n,l)=\sum_{d\mid(m,n,l)}d\,H\Bigl(\frac{4mn-l^2}{d^2}\Bigr).
 \end{equation}
-Put $\lambda_1=648$ and $\lambda_p=\pf(p+1)$ for a prime $p$.
+For an integer $e\ge1$ let $\Phi|U_e$ denote the function $\Phi(\tau,ez)$; it multiplies the index by $e^2$. Define the class number term $\mathcal G_m$ for $m=1$ and for prime powers $m=p^k$ by
+\begin{equation}\label{eq:Gm}
+\mathcal G_1=\Hc,\qquad \mathcal G_p=\Hc|V_p,\qquad \mathcal G_{p^k}=\Hc|V_{p^k}-p\,(\Hc|V_{p^{k-2}})|U_p\quad(k\ge2),
+\end{equation}
+so that its coefficients are $g_m(n,l)=h_m(n,l)$ for $m=1$ or $m$ prime, and $g_m(n,l)=h_m(n,l)-p\,h_{m/p^2}(n,l/p)$ for $k\ge2$, where the second term is read as $0$ unless $p\mid l$. Put $\lambda_1=648$ and $\lambda_m=\pf(m+1)$ for a prime power $m$.
 
 \begin{mainthm}[The class number term]\label{thm:D}
-For $m=1$ and for every prime $m$, the function
+For $m=1$ and for every prime power $m$, the function
 \[
-\phi_m=\Delta\,\psi^F_m+\lambda_m\,\Hc|V_m
+\phi_m=\Delta\,\psi^F_m+\lambda_m\,\mathcal G_m
 \]
-is a weak Jacobi form of weight $2$ and index $m$. For $m\in\Mset$ it is the polynomial in $E_4,E_6,A,\phi_{0,1}$ listed in Appendix~\ref{app:data}; in particular $\phi_1=3E_4A$ and $\phi_2=\frac13(22E_4A\phi_{0,1}-10E_6A^2)$.
+is a weak Jacobi form of weight $2$ and index $m$. For $m\in\{1,2,3,5,7,11,13\}$ it is the polynomial in $E_4,E_6,A,\phi_{0,1}$ listed in Appendix~\ref{app:data}; in particular $\phi_1=3E_4A$ and $\phi_2=\frac13(22E_4A\phi_{0,1}-10E_6A^2)$.
 \end{mainthm}
 
-For $m=1,2$ Theorem~\ref{thm:D} is the pair of identities \cite[(3.6), (3.7)]{BM13}. For a prime $m$ the constant $\lambda_m$ comes out of the proof: it is the unique multiple of $\Hc|V_m$ whose nonholomorphic completion cancels that of $A_{1,m}$. The value $\lambda_1=2\pf(2)$, rather than $\pf(2)$, reflects the fact that the operator $V_p$ doubles the shadow of $\Hc$ while $V_1$ does not.
+For $m=1,2$ Theorem~\ref{thm:D} is the pair of identities \cite[(3.6), (3.7)]{BM13}. The class number term comes out of the proof: it is the combination of Hecke images of $\Hc$ whose nonholomorphic completion cancels that of $A_{1,m}$. The value $\lambda_1=2\pf(2)$, rather than $\pf(2)$, reflects the fact that the operator $V_p$ doubles the shadow of $\Hc$ while $V_1$ does not. For $m=p^k$ with $k\ge2$ the shadow of $\Hc|V_{p^k}$ is too large by the contribution of the lattice vectors divisible by $p$, and $p\,(\Hc|V_{p^{k-2}})|U_p$ removes exactly this contribution (Lemma~\ref{lem:count}). When $m$ has two distinct prime factors no combination of the functions $\Hc|V_{m/e^2}|U_e$ has the right shadow (Section~\ref{sec:remarks}).
 
 \subsection*{What the proof has to overcome}
 Three features make the problem harder than its four-dimensional analogue in $\mathcal N=8$ string theory, where the index is a finite combination of coefficients of a single weak Jacobi form.
 
 First, the coefficients $\cF_m(n,l)$ themselves are not positive in the required sense. For $m=5$ the charge $(n,J)=(10,14)$ has discriminant $4$, and the coefficient of $\psi^F_5$ at this discriminant gives $(-1)^{14+1}\cF_5(10,14)=-2\,023\,536$; the reduced form of $(10,14,5)$ is $(1,0,1)$, and $\dstar(10,14,5)=-\cF_1(1,0)=50\,064$. The passage to the reduced form in \eqref{eq:dstar} is therefore essential, and it has the consequence that the two terms of \eqref{eq:drot} can be coefficients of two different functions $\psi^F_c$.
 
-Second, $\psi^F_m$ is not modular: it is the sum of a weakly holomorphic Jacobi form and a multiple of $\Hc|V_m/\Delta$. The main term of the asymptotic formula comes from the first, but the class numbers contribute an error that is only polynomially smaller in the range that matters for $m=1,2,3$.
+Second, $\psi^F_m$ is not modular: it is the sum of a weakly holomorphic Jacobi form and a multiple of $\Hc|V_m/\Delta$. The main term of the asymptotic formula comes from the first, but the class numbers contribute an error that is only polynomially smaller in the range that matters for $m\le5$.
 
-Third, the positivity of $d(n,J,m)$ is a statement about a difference of two exponentially large numbers. When $J$ is small the two discriminants $D$ and $D-4(J+1)$ are close, and the main terms differ by a factor $1-O(D^{-1/2})$. The error terms have to be smaller than this relative gap, uniformly, and they are controlled only beyond an explicit discriminant $D^*_m$ that ranges from $258$ to $1030$.
+Third, the positivity of $d(n,J,m)$ is a statement about a difference of two exponentially large numbers. When $J$ is small the two discriminants $D$ and $D-4(J+1)$ are close, and the main terms differ by a factor $1-O(D^{-1/2})$. The error terms have to be smaller than this relative gap, uniformly, and they are controlled only beyond an explicit discriminant $D^*_m$ that ranges from $258$ to $7052$.
 
 \subsection*{Plan}
 Section~\ref{sec:physics} recalls where the formula \eqref{eq:drot} comes from. Section~\ref{sec:forms} proves the facts about binary quadratic forms that the reduction needs, in particular a lemma on successive minima that controls the second charge $(n,J+2,m)$. Section~\ref{sec:jacobi} defines the Jacobi forms and proves that $\psi^F_m$ is holomorphic, elliptic and even, and that its most polar coefficient is $m+2$. Section~\ref{sec:completion} proves Theorem~\ref{thm:D} from Zwegers' completion of Appell--Lerch sums and Zagier's completion of the class number generating function. Section~\ref{sec:rademacher} gives the exact formula for the coefficients of $\phi_m/\Delta$, Section~\ref{sec:bessel} proves the inequalities for Bessel functions that are needed, and Section~\ref{sec:tail} proves the tail estimate: beyond $D^*_m$ the index grows faster than its error. Sections~\ref{sec:proofB} and~\ref{sec:proofA} prove Theorems~\ref{thm:B} and~\ref{thm:A} and Corollary~\ref{cor:C}, and Section~\ref{sec:remarks} discusses what lies beyond. Appendix~\ref{app:data} lists $\phi_m$ and the polar coefficients, Appendix~\ref{app:computation} describes the exact computations, and Appendix~\ref{app:bounds} proves the elementary bounds for $H(N)$ and $\pf(k)$.
@@ -344,20 +348,20 @@ Figure~\ref{fig:poles} shows the poles and the strip in which the expansions are
 \end{figure}
 
 \begin{lemma}\label{lem:Fwell}
-Let $m=1$ or let $m$ be prime. If $l,l'\in\{0,1,\dots,m\}$ and $l^2\equiv l'^2\pmod{4m}$, then $l=l'$. Consequently there is a function $F_m$ on the integers $D\equiv-l^2\pmod{4m}$ such that
+For integers $D$ and $r\in\{0,1,\dots,m\}$ with $D\equiv-r^2\pmod{4m}$ put $F_m(D,r)=(-1)^{r+1}\cF_m\bigl((D+r^2)/4m,\,r\bigr)$. Then
 \[
-(-1)^{l+1}\cF_m(n,l)=F_m(4mn-l^2)\qquad\text{for all }n,l,
+(-1)^{l+1}\cF_m(n,l)=F_m(4mn-l^2,r)\qquad\text{for all }n,l,
 \]
-and if the reduced form of a charge $(n,l,m')$ with $D>0$ is $[a,b,m]$, then $\dstar(n,l,m')=F_m(D)$.
+where $r\in\{0,\dots,m\}$ is the representative of $\pm l$ modulo $2m$, and if the reduced form of a charge $(n,l,m')$ with $D>0$ is $[a,b,c]$, then $\dstar(n,l,m')=F_c(D,b)$. If $m=1$ or $m$ is prime, then $F_m(D,r)$ depends only on $D$, and we write it $F_m(D)$.
 \end{lemma}
 
 \begin{proof}
-For $m=1$ the squares $0$ and $1$ are distinct modulo $4$. Let $m$ be prime and $l^2\equiv l'^2\pmod{4m}$. Then $m$ divides $(l-l')(l+l')$. If $m\mid l-l'$, then $l=l'$ or $\{l,l'\}=\{0,m\}$, and the latter is impossible because $m^2\not\equiv0\pmod{4m}$ for a prime $m$. If $m\mid l+l'$, then $l+l'\in\{0,m,2m\}$. The cases $0$ and $2m$ give $l=l'$. In the case $l+l'=m$ we have $l'^2-l^2=m(m-2l)$, so $4\mid m-2l$; this is impossible for odd $m$, and for $m=2$ the only possibility with $l\ne l'$ is $\{l,l'\}=\{0,2\}$, where $l'^2-l^2=\pm4\not\equiv0\pmod 8$.
+Let $r\equiv\varepsilon l\pmod{2m}$ with $\varepsilon=\pm1$. Then $r^2\equiv l^2\pmod{4m}$, so $(D+r^2)/4m$ is an integer, and $r\equiv l\pmod 2$, so $(-1)^{l+1}=(-1)^{r+1}$. By Lemma~\ref{lem:poles}, $\cF_m(n,l)$ depends only on $4mn-l^2$ and on the class of $\pm l$ modulo $2m$; this gives the first statement. The second is the definition \eqref{eq:dstar}, since $0\le b\le c$.
 
-By Lemma~\ref{lem:poles}, $\cF_m(n,l)$ depends only on $D=4mn-l^2$ and on the class of $\pm l$ modulo $2m$, which has a unique representative in $\{0,\dots,m\}$; by the first part, this representative is determined by $D$. The sign $(-1)^{l+1}$ is determined by $D$ too, because $D\equiv0\pmod4$ when $l$ is even and $D\equiv3\pmod 4$ when $l$ is odd. The last statement is the definition \eqref{eq:dstar}.
+Let $m=1$ or let $m$ be prime, and let $r,r'\in\{0,\dots,m\}$ with $r^2\equiv r'^2\pmod{4m}$; we show $r=r'$. For $m=1$ the squares $0$ and $1$ are distinct modulo $4$. For prime $m$, $m$ divides $(r-r')(r+r')$. If $m\mid r-r'$, then $r=r'$ or $\{r,r'\}=\{0,m\}$, and the latter is impossible because $m^2\not\equiv0\pmod{4m}$. If $m\mid r+r'$, then $r+r'\in\{0,m,2m\}$. The cases $0$ and $2m$ give $r=r'$. In the case $r+r'=m$ we have $r'^2-r^2=m(m-2r)$, so $4\mid m-2r$; this is impossible for odd $m$, and for $m=2$ the only possibility with $r\ne r'$ is $\{r,r'\}=\{0,2\}$, where $r'^2-r^2=\pm4\not\equiv0\pmod 8$. Hence $r$ is determined by $D$.
 \end{proof}
 
-For composite $m$ the value of $\cF_m(n,l)$ is not determined by $4mn-l^2$; for instance, for $m=4$ the residues $l=0$ and $l=4$ both give $D\equiv0\pmod{16}$, and at $D=16$ one finds $\cF_4(1,0)=-185\,738\,352$ but $\cF_4(2,4)=-32\,861\,184$.
+For prime powers $m=p^k$ with $k\ge2$ the value does depend on $r$; for instance, for $m=4$ the residues $r=0$ and $r=4$ both give $D\equiv0\pmod{16}$, and at $D=16$ one finds $F_4(16,0)=-\cF_4(1,0)=185\,738\,352$ but $F_4(16,4)=-\cF_4(2,4)=32\,861\,184$.
 
 \begin{lemma}\label{lem:polar}
 The coefficient of $q^{-1}$ in $\psi^F_m$ is the Laurent polynomial
@@ -374,7 +378,7 @@ In the strip, the coefficient of $q^{-1}$ in $\psi_m=\Delta^{-1}\chi_{m+1}/A$ is
 
 \section{The completion and the class number term}\label{sec:completion}
 
-This section proves Theorem~\ref{thm:D}. The idea is that $A_{1,m}$ and $\Hc|V_m$ are both holomorphic parts of real-analytic functions that transform like Jacobi forms of weight $2$ and index $m$, and that their nonholomorphic parts are proportional. We use the error function in the normalisation of Zwegers,
+This section proves Theorem~\ref{thm:D}. The idea is that $A_{1,m}$ and $\mathcal G_m$ are both holomorphic parts of real-analytic functions that transform like Jacobi forms of weight $2$ and index $m$, and that their nonholomorphic parts are proportional. We use the error function in the normalisation of Zwegers,
 \[
 E(x)=2\int_0^x e^{-\pi t^2}\,dt=\operatorname{erf}(\sqrt\pi\,x),
 \]
@@ -497,59 +501,99 @@ and the exponent equals $z^2/(4\sigma+1)-\frac14$, as one checks by expanding $(
 Adding the two identities gives $\Hh(U(\tau,z))=(\tau+1)^2\e(z^2/(\tau+1))\Hh(\tau,z)$, which is (M) for $U$ with $k=2$ and $m=1$. Real-analyticity is clear from the definition, and $\Hh$ is entire in $z$ because the theta functions are.
 \end{proof}
 
-\begin{lemma}\label{lem:Vp}
-Let $p$ be a prime. Then
+For a positive integer $k$ and integers $\Lambda,R$ with $R\equiv\Lambda\pmod2$ put $t=(R-\Lambda)/2$ and $u=(R+\Lambda)/2$, so that $tu=(R^2-\Lambda^2)/4$, and let
 \[
-\Hh|_2V_p=\Hc|V_p+\frac{\sqrt p}{4\pi}\sum_{l\bmod 2p}S_{p,l}\,\vt_{p,l},
+N_k(\Lambda,R)=\#\bigl\{(a,d):\ ad=k,\ a\mid t,\ a\mid u,\ d\mid tu/a^2\bigr\};
 \]
-where $\Hc|V_p$ has the coefficients \eqref{eq:HVm}.
+put $N_k(\Lambda,R)=0$ if $R\not\equiv\Lambda\pmod 2$. For $m\ge1$ let $T_m(\Lambda,R)=[\Lambda\equiv R\ (2m)]+[\Lambda\equiv-R\ (2m)]$, where $[\cdot]$ is $1$ if the condition holds and $0$ otherwise. For a function $\Phi$ of the form $\frac{1}{8\pi\sqrt y}\sum_{\Lambda,R}w(\Lambda,R)\,I(\pi\Lambda^2y/k)\,\e\bigl((R^2-\Lambda^2)\tau/4k\bigr)\zeta^R$ we say that $\Phi$ has index $k$ and \emph{weight} $w$. The summand depends on $\Lambda$ only through $\Lambda^2$, so two weights with the same symmetrisation $w(\Lambda,R)+w(-\Lambda,R)$ give the same function.
+
+\begin{lemma}\label{lem:Ahatw}
+The nonholomorphic part $\Ah_{1,m}-A_{1,m}$ of Lemma~\ref{lem:Ahat} has index $k=m$ and weight $\sqrt m\,T_m$. The nonholomorphic part $\Hh-\Hc$ of Lemma~\ref{lem:Hhat} has index $k=1$ and weight $N_1$.
 \end{lemma}
 
 \begin{proof}
-The operator $V_p$ is linear and is applied termwise to absolutely convergent series. Its action on $\Hc$ is given by \eqref{eq:heckecoef} with $k=2$, which gives \eqref{eq:HVm}. It remains to compute $G|_2V_p$ for
+By \eqref{eq:Sml} and the definition of $\vt_{m,l}$,
 \[
-G(\tau,z)=\frac1{8\pi}\sum_{\mu}S_{1,\mu}\vt_{1,\mu}=\frac{1}{8\pi\sqrt y}\sum_{\lambda\in\ZZ}\ \sum_{r\equiv\lambda\,(2)}I(\pi\lambda^2y)\,\e\Bigl(\frac{(r^2-\lambda^2)\tau}{4}\Bigr)\zeta^r .
+\frac{\sqrt m}{4\pi}\sum_{l\bmod 2m}S_{m,l}\vt_{m,l}=\frac{\sqrt m}{4\pi\sqrt y}\sum_{\Lambda\equiv R\ (2m)}I\Bigl(\frac{\pi\Lambda^2y}{m}\Bigr)\e\Bigl(\frac{(R^2-\Lambda^2)\tau}{4m}\Bigr)\zeta^R .
 \]
-By definition $G|_2V_p=p\sum_{ad=p}\sum_{b\bmod d}d^{-2}G\bigl(\frac{a\tau+b}{d},az\bigr)$. The term with $a=p$, $d=1$ is $pG(p\tau,pz)$; replacing $y$ by $py$ and writing $\lambda'=p\lambda$, $r'=pr$, it equals
-\[
-\frac{\sqrt p}{8\pi\sqrt y}\sum_{p\mid\lambda'}\ \sum_{r'\equiv\lambda'\,(2p)}I\Bigl(\frac{\pi\lambda'^2y}{p}\Bigr)\e\Bigl(\frac{(r'^2-\lambda'^2)\tau}{4p}\Bigr)\zeta^{r'}.
-\]
-The terms with $a=1$, $d=p$ give $p^{-1}\sum_{b\bmod p}G((\tau+b)/p,z)$. Here $y$ is replaced by $y/p$, and the sum over $b$ of $\e(b(r^2-\lambda^2)/4p)$ equals $p$ if $p$ divides the integer $(r^2-\lambda^2)/4$ and $0$ otherwise. Write $r=\lambda+2t$, so that $(r^2-\lambda^2)/4=t(\lambda+t)$. For every prime $p$ (including $p=2$), the condition $p\mid t(\lambda+t)$ together with $r\equiv\lambda\pmod2$ means $r\equiv\lambda$ or $r\equiv-\lambda\pmod{2p}$, and both hold exactly when $p\mid\lambda$ and $r\equiv\lambda\pmod{2p}$. Since the summand depends on $\lambda$ only through $\lambda^2$, the sum over the union of the two congruence conditions is twice the sum over $r\equiv\lambda\pmod{2p}$ minus the sum over $p\mid\lambda$, $r\equiv\lambda\pmod{2p}$. So these terms equal
-\[
-\frac{\sqrt p}{8\pi\sqrt y}\Bigl(2\sum_{\lambda}\ \sum_{r\equiv\lambda\,(2p)}-\sum_{p\mid\lambda}\ \sum_{r\equiv\lambda\,(2p)}\Bigr)I\Bigl(\frac{\pi\lambda^2y}{p}\Bigr)\e\Bigl(\frac{(r^2-\lambda^2)\tau}{4p}\Bigr)\zeta^{r}.
-\]
-The subtracted part cancels the term with $a=p$, and what remains is
-\[
-\frac{2\sqrt p}{8\pi\sqrt y}\sum_{l\bmod 2p}\ \sum_{\lambda\equiv l\,(2p)}I\Bigl(\frac{\pi\lambda^2y}{p}\Bigr)q^{-\lambda^2/4p}\,\vt_{p,l}=\frac{\sqrt p}{4\pi}\sum_{l\bmod 2p}S_{p,l}\,\vt_{p,l}.
-\]
+The substitution $\Lambda\mapsto-\Lambda$ shows that the sum over $\Lambda\equiv R$ equals the sum over $\Lambda\equiv-R$, so twice it is the sum with weight $T_m$; this gives the first statement. For $m=1$ the condition $\Lambda\equiv R\pmod2$ is $N_1(\Lambda,R)=1$, and $\Hh-\Hc=\frac1{8\pi}\sum_\mu S_{1,\mu}\vt_{1,\mu}$ is the same sum with $\frac1{8\pi}$ in place of $\frac1{4\pi}$.
 \end{proof}
 
-The factor $2$ in Lemma~\ref{lem:Vp} has no counterpart for $m=1$: comparing with Lemma~\ref{lem:Ahat}, the nonholomorphic part of $\Hh$ is $\frac1{8\pi}\sum S_{1,\mu}\vt_{1,\mu}$, half that of $\Ah_{1,1}$, while for a prime $p$ the nonholomorphic parts of $\Hh|V_p$ and $\Ah_{1,p}$ coincide. This is why $\lambda_1=2\pf(2)$ and $\lambda_p=\pf(p+1)$.
+\begin{lemma}\label{lem:Vk}
+Let $k\ge1$. Then $\Hh|_2V_k-\Hc|V_k$ has index $k$ and weight $\sqrt k\,N_k$, where $\Hc|V_k$ has the coefficients \eqref{eq:HVm}.
+\end{lemma}
+
+\begin{proof}
+The operator $V_k$ is linear and is applied termwise to absolutely convergent series; on $\Hc$ it gives \eqref{eq:HVm} by \eqref{eq:heckecoef}. It remains to compute $G|_2V_k$ for
+\[
+G(\tau,z)=\Hh-\Hc=\frac{1}{8\pi\sqrt y}\sum_{\lambda\in\ZZ}\ \sum_{r\equiv\lambda\,(2)}I(\pi\lambda^2y)\,\e\Bigl(\frac{(r^2-\lambda^2)\tau}{4}\Bigr)\zeta^r .
+\]
+By definition $G|_2V_k=k\sum_{ad=k}\sum_{b\bmod d}d^{-2}G\bigl(\frac{a\tau+b}{d},az\bigr)$. In the term belonging to $(a,d,b)$ the imaginary part $y$ is replaced by $ay/d$, the exponential factor acquires $\e(b(r^2-\lambda^2)/4d)$, and $\zeta^r$ becomes $\zeta^{ar}$. Summing over $b\bmod d$ gives $d$ if $d$ divides the integer $(r^2-\lambda^2)/4$ and $0$ otherwise. So the contribution of the pair $(a,d)$ is
+\[
+\frac{k}{d}\sqrt{\frac da}\,\frac{1}{8\pi\sqrt y}\sum_{\substack{r\equiv\lambda\,(2)\\ d\,\mid\,(r^2-\lambda^2)/4}}I\Bigl(\frac{\pi\lambda^2ay}{d}\Bigr)\e\Bigl(\frac{a(r^2-\lambda^2)\tau}{4d}\Bigr)\zeta^{ar}.
+\]
+Put $\Lambda=a\lambda$ and $R=ar$. Then $\pi\lambda^2ay/d=\pi\Lambda^2y/k$, $a(r^2-\lambda^2)/4d=(R^2-\Lambda^2)/4k$, and $\frac kd\sqrt{d/a}=\sqrt k$. The pairs $(\Lambda,R)$ that occur are those with $a\mid\Lambda$, $a\mid R$ and $\Lambda/a\equiv R/a\pmod2$, that is, with $a\mid t$ and $a\mid u$; and the condition on $d$ reads $d\mid tu/a^2$. Summing over $(a,d)$ gives the weight $\sqrt k\,N_k$. All series converge absolutely and locally uniformly, since $N_k\le k$, $I(x)\le2e^{-x}$ and $|\e((R^2-\Lambda^2)\tau/4k)|=e^{-\pi(R^2-\Lambda^2)y/2k}$, so the terms are bounded by $2k\,e^{-\pi(R^2+\Lambda^2)y/2k}|\zeta|^R$.
+\end{proof}
+
+For an integer $e\ge1$ and a function $\Phi$ satisfying (E) and (M) with weight $2$ and index $j$, the function $\Phi|U_e(\tau,z)=\Phi(\tau,ez)$ satisfies (E) and (M) with weight $2$ and index $je^2$: in (M) the factor $\e(jc(ez)^2/(c\tau+d))$ becomes $\e(je^2cz^2/(c\tau+d))$, and in (E) the shift $z\mapsto z+\lambda\tau+\mu$ becomes $ez\mapsto ez+e\lambda\tau+e\mu$. If $\Phi$ has index $j$ and weight $w$ in the sense above, then $\Phi|U_e$ has index $je^2$ and weight $(\Lambda,R)\mapsto[e\mid\Lambda,\,e\mid R]\,w(\Lambda/e,R/e)$: replacing $\zeta$ by $\zeta^e$ and writing $\Lambda'=e\Lambda$, $R'=eR$ turns $I(\pi\Lambda^2y/j)$ into $I(\pi\Lambda'^2y/je^2)$ and $(R^2-\Lambda^2)/4j$ into $(R'^2-\Lambda'^2)/4je^2$.
+
+\begin{lemma}\label{lem:count}
+Let $m=p^k$ be a prime power and let $R\equiv\Lambda\pmod 2$. Then
+\[
+N_m(\Lambda,R)-[\,p\mid t,\ p\mid u\,]\,N_{m/p^2}(\Lambda/p,R/p)=T_m(\Lambda,R),
+\]
+where the second term is absent when $k=1$.
+\end{lemma}
+
+\begin{proof}
+Let $\alpha=v_p(t)$ and $\beta=v_p(u)$, with $v_p(0)=\infty$; by symmetry we may assume $\alpha\le\beta$. A factorisation $m=ad$ is $a=p^j$, $d=p^{k-j}$ with $0\le j\le k$, and the conditions $a\mid t$, $a\mid u$, $d\mid tu/a^2$ read $j\le\alpha$ and $\alpha+\beta\ge k+j$. Hence
+\[
+N_m(\Lambda,R)=\#\{\,j:\ 0\le j\le\min(\alpha,k,\alpha+\beta-k)\,\}.
+\]
+The congruence $\Lambda\equiv R\pmod{2m}$ means $p^k\mid t$, and $\Lambda\equiv-R$ means $p^k\mid u$; so $T_m=[\alpha\ge k]+[\beta\ge k]$. If $p\mid t$ and $p\mid u$, the pair $(\Lambda/p,R/p)$ has $t/p$, $u/p$ in place of $t,u$, with valuations $\alpha-1$, $\beta-1$, and the same description with $k-2$ in place of $k$ and the substitution $j=j'+1$ gives
+\[
+N_{m/p^2}(\Lambda/p,R/p)=\#\{\,j:\ 1\le j\le\min(\alpha,k-1,\alpha+\beta-k+1)\,\}.
+\]
+Let $k\ge2$; we go through the four possible cases.
+
+If $\alpha+\beta<k$, the first set is empty, and so is the second because $\alpha+\beta-k+1\le0$; and $T_m=0$ since $\beta\le\alpha+\beta<k$.
+
+If $\alpha+\beta\ge k$ and $\beta<k$, then $\alpha\ge1$ and the subtracted term is present. Here $\alpha+\beta-k<\alpha$ and $\alpha+\beta-k+1\le\min(\alpha,k-1)$, so the two counts are $\alpha+\beta-k+1$ and $\alpha+\beta-k+1$, and their difference is $0=T_m$.
+
+If $\alpha<k\le\beta$, the first count is $\alpha+1$. If $\alpha=0$ the subtracted term is absent and the difference is $1$. If $\alpha\ge1$ the second count is $\alpha$, since $\alpha\le k-1$ and $\alpha+\beta-k+1\ge\alpha+1$; the difference is again $1$. In both cases $T_m=1$.
+
+If $\alpha\ge k$, then $\beta\ge k$, the counts are $k+1$ and $k-1$, and the difference is $2=T_m$.
+
+For $k=1$ the first set is $\{j\in\{0,1\}:j\le\alpha,\ \alpha+\beta\ge1+j\}$, which has $0$, $1$ or $2$ elements according as $\beta=0$, $\alpha=0<\beta$ or $\alpha\ge1$; this is $[\alpha\ge1]+[\beta\ge1]$.
+\end{proof}
 
 \subsection{Proof of Theorem~\ref{thm:D}}
-Let $m=1$ or let $m$ be prime. By \eqref{eq:psiF},
-\[
-\phi_m=\Delta\psi^F_m+\lambda_m\Hc|V_m=\frac{\chi_{m+1}}{A}-\pf(m+1)A_{1,m}+\lambda_m\Hc|V_m .
-\]
-By Lemmas~\ref{lem:Ahat}, \ref{lem:Hhat} and~\ref{lem:Vp},
-\[
--\pf(m+1)A_{1,m}+\lambda_m\Hc|V_m=-\pf(m+1)\Ah_{1,m}+\lambda_m\Hh|V_m+\kappa_m\sum_{l\bmod 2m}S_{m,l}\vt_{m,l},
-\]
-with $\kappa_1=\frac{\pf(2)}{4\pi}-\frac{\lambda_1}{8\pi}=0$ and $\kappa_p=\frac{\sqrt p}{4\pi}(\pf(p+1)-\lambda_p)=0$. Therefore $\phi_m=\chi_{m+1}/A-\pf(m+1)\Ah_{1,m}+\lambda_m\Hh|V_m$, and each of the three terms satisfies (E) and (M) with weight $2$ and index $m$: the first because $\chi_{m+1}$ and $A$ are weak Jacobi forms of weights $0,-2$ and indices $m+1,1$, the second by Lemma~\ref{lem:Ahat}, and the third by Lemma~\ref{lem:Hhat} and \cite[Thm.~4.2]{EZ85}. On the other hand $\phi_m$ is holomorphic in $\tau$ and in $z$, because $\psi^F_m$ is (Lemma~\ref{lem:poles}) and $\Hc|V_m$ is a theta series with polynomially bounded coefficients ($H(N)\le N+1$ by Lemma~\ref{lem:hurwitz}). Its expansion has $n\ge0$, since $\psi^F_m$ has $n\ge-1$ and $\Hc|V_m$ has $n\ge0$. So $\phi_m$ is a weak Jacobi form of weight $2$ and index $m$.
+Let $m=1$ or let $m=p^k$ be a prime power, and put $\widehat{\mathcal G}_1=\Hh$, $\widehat{\mathcal G}_p=\Hh|V_p$ and $\widehat{\mathcal G}_{p^k}=\Hh|V_{p^k}-p\,(\Hh|V_{p^{k-2}})|U_p$ for $k\ge2$. By Lemma~\ref{lem:Hhat}, \cite[Thm.~4.2]{EZ85} and the remark on $U_e$, $\widehat{\mathcal G}_m$ satisfies (E) and (M) with weight $2$ and index $m$, and its holomorphic part is $\mathcal G_m$; by Lemma~\ref{lem:Vk} and the rule for $U_p$, its nonholomorphic part $\widehat{\mathcal G}_m-\mathcal G_m$ has index $m$ and weight
+\begin{align*}
+&\sqrt m\,N_m(\Lambda,R)-p\sqrt{m/p^2}\,[p\mid\Lambda,\,p\mid R]\,N_{m/p^2}(\Lambda/p,R/p)\\
+&\qquad=\sqrt m\bigl(N_m(\Lambda,R)-[p\mid t,\,p\mid u]\,N_{m/p^2}(\Lambda/p,R/p)\bigr)
+\end{align*}
+for $k\ge2$, and $\sqrt m\,N_m$ for $k\le1$. In the second expression we used that $N_{m/p^2}(\Lambda/p,R/p)=0$ unless $\Lambda/p\equiv R/p\pmod 2$, and under $p\mid\Lambda$, $p\mid R$ this congruence is equivalent to $p\mid t$ and $p\mid u$. By Lemma~\ref{lem:count} the weight is $\sqrt m\,T_m$ when $m$ is a prime power. For $m=1$ it is $N_1$, and $T_1=2N_1$ because $\Lambda\equiv R$ and $\Lambda\equiv-R$ are the same condition modulo $2$. Comparing with Lemma~\ref{lem:Ahatw}, $\widehat{\mathcal G}_m-\mathcal G_m=\kappa_m(\Ah_{1,m}-A_{1,m})$ with $\kappa_1=\frac12$ and $\kappa_m=1$ for prime powers, that is, $\lambda_m\kappa_m=\pf(m+1)$.
 
-By \eqref{eq:ring}, $\phi_m=\sum_i x_iM_i$ for the monomials $M_i=E_4^\alpha E_6^\beta A^i(2\phi_{0,1})^{m-i}$ with $4\alpha+6\beta-2i=2$, $1\le i\le m$; there are $1,2,3,6,9,18,23$ of them for $m=1,2,3,5,7,11,13$. The identity $\Delta\psi^F_m=\sum_ix_iM_i-\lambda\,\Hc|V_m$ is linear in the unknowns $(x_i,\lambda)$. We computed the coefficients of $q^n\zeta^l$, $0\le n\le14$, $0\le l\le m$, of $\Delta\psi^F_m$, of the $M_i$ and of $\Hc|V_m$ in exact rational arithmetic (Appendix~\ref{app:computation}), and found that the resulting matrix has full column rank and that the system has the solution listed in Appendix~\ref{app:data}, with $\lambda=\lambda_m$. Since a solution exists by the first part of the proof and the rank is full, the solution is unique, and the $x_i$ are the coefficients of $\phi_m$. \qed
+By \eqref{eq:psiF},
+\[
+\phi_m=\Delta\psi^F_m+\lambda_m\mathcal G_m=\frac{\chi_{m+1}}{A}-\pf(m+1)A_{1,m}+\lambda_m\mathcal G_m=\frac{\chi_{m+1}}{A}-\pf(m+1)\Ah_{1,m}+\lambda_m\widehat{\mathcal G}_m,
+\]
+and each of the three terms on the right satisfies (E) and (M) with weight $2$ and index $m$: the first because $\chi_{m+1}$ and $A$ are weak Jacobi forms of weights $0,-2$ and indices $m+1,1$, the second by Lemma~\ref{lem:Ahat}, and the third as just shown. On the other hand $\phi_m$ is holomorphic in $\tau$ and in $z$, because $\psi^F_m$ is (Lemma~\ref{lem:poles}) and $\mathcal G_m$ is a theta series with polynomially bounded coefficients ($H(N)\le N+1$ by Lemma~\ref{lem:hurwitz}). Its expansion has $n\ge0$, since $\psi^F_m$ has $n\ge-1$ and $\mathcal G_m$ has $n\ge0$. So $\phi_m$ is a weak Jacobi form of weight $2$ and index $m$.
+
+For the explicit form, \eqref{eq:ring} gives $\phi_m=\sum_i x_iM_i$ for the monomials $M_i=E_4^\alpha E_6^\beta A^i(2\phi_{0,1})^{m-i}$ with $4\alpha+6\beta-2i=2$, $1\le i\le m$; there are $1,2,3,6,9,18,23$ of them for $m=1,2,3,5,7,11,13$. The identity $\Delta\psi^F_m=\sum_ix_iM_i-\lambda\,\mathcal G_m$ is linear in the unknowns $(x_i,\lambda)$. We computed the coefficients of $q^n\zeta^l$, $0\le n\le14$, $0\le l\le m$, of $\Delta\psi^F_m$, of the $M_i$ and of $\mathcal G_m$ in exact rational arithmetic (Appendix~\ref{app:computation}), and found that the resulting matrix has full column rank and that the system has the solution listed in Appendix~\ref{app:data}, with $\lambda=\lambda_m$. Since a solution exists by the first part of the proof and the rank is full, the solution is unique, and the $x_i$ are the coefficients of $\phi_m$. The same computation for $m=4,8,9$ confirms the first part: the system with $\mathcal G_m$ is consistent of full rank with $\lambda=\lambda_m$, while for $m=4$ the system with $\Hc|V_4$ in place of $\mathcal G_4$ has no solution. \qed
 
 \begin{remark}\label{rem:composite}
-For composite $m$ the argument fails at Lemma~\ref{lem:Vp}, and so does the identity: for $m=4$ and $m=6$ the same linear system, with the coefficients $0\le n\le12$, has no solution. Some other combination of class number generating functions is then needed, and Lemma~\ref{lem:Fwell} fails as well. This is why Theorem~\ref{thm:B} is restricted to $m=1$ and prime $m$.
+When $m$ has two distinct prime factors the count of Lemma~\ref{lem:count} fails. For $m=6$ the only function $\Hc|V_{6/e^2}|U_e$ of index $6$ is $\Hc|V_6$, and its weight $N_6$ is not a multiple of $T_6$: at $\Lambda=1$ one has $N_6(1,1)=N_6(1,5)=1$, while $T_6(1,1)=1$ and $T_6(1,5)=0$; at $(\Lambda,R)=(0,0)$, $N_6=4$ and $T_6=2$. Correspondingly, the linear system above for $m=6$, with $\Hc|V_6$ and the coefficients $0\le n\le12$, has no solution. Another mock modular correction is needed for such $m$, and we have not determined it. This is why Theorem~\ref{thm:B} is restricted to $m=1$ and prime powers.
 \end{remark}
 
 \section{The exact formula}\label{sec:rademacher}
 
-Let $m\in\Mset$. By Theorem~\ref{thm:D}, $\phi_m/\Delta$ is a weakly holomorphic Jacobi form of weight $-10$ and index $m$. We write its coefficients as $a_m(n,l)$, and, since they depend only on $D=4mn-l^2$ and on $l\bmod 2m$, also as $a_m(D,l)$. Let $\delta_m(n,l)$ be the coefficient of $q^n\zeta^l$ in $\Hc|V_m/\Delta$, so that
+Let $m\in\Mset$. By Theorem~\ref{thm:D}, $\phi_m/\Delta$ is a weakly holomorphic Jacobi form of weight $-10$ and index $m$. We write its coefficients as $a_m(n,l)$, and, since they depend only on $D=4mn-l^2$ and on $l\bmod 2m$, also as $a_m(D,l)$. Let $\delta_m(n,l)$ be the coefficient of $q^n\zeta^l$ in $\mathcal G_m/\Delta$, so that
 \begin{equation}\label{eq:hdelta}
-\delta_m(n,l)=\sum_{j\ge0}\pf(j)\,h_m(n+1-j,l),\qquad \cF_m(n,l)=a_m(n,l)-\lambda_m\,\delta_m(n,l),
+\delta_m(n,l)=\sum_{j\ge0}\pf(j)\,g_m(n+1-j,l),\qquad \cF_m(n,l)=a_m(n,l)-\lambda_m\,\delta_m(n,l),
 \end{equation}
-with $h_m$ as in \eqref{eq:HVm}. The pairs $(D',l')$ with $D'<0$ and $a_m(D',l')\ne0$ are the \emph{polar terms}; there are finitely many classes of them, because $a_m(n,l)=0$ for $n<-1$ and the coefficients of a weak Jacobi form vanish for $4mn-l^2<-m^2$. The most polar one is $D'=-m(m+4)$, $l'\equiv m$, where $a_m=\cF_m(-1,m)=m+2$ by Lemma~\ref{lem:polar}, since $h_m(0,m)=H(-m^2)=0$. The other polar coefficients of $\phi_m/\Delta$ differ from those of $\psi^F_m$ only at $(D',l')=(-4m,0)$, where $\delta_m(-1,0)=\sigma(m)H(0)=-\sigma(m)/12$; all of them are listed in Appendix~\ref{app:data}.
+with $g_m$ as in \eqref{eq:Gm}. The pairs $(D',l')$ with $D'<0$ and $a_m(D',l')\ne0$ are the \emph{polar terms}; there are finitely many classes of them, because $a_m(n,l)=0$ for $n<-1$ and the coefficients of a weak Jacobi form vanish for $4mn-l^2<-m^2$. The most polar one is $D'=-m(m+4)$, $l'\equiv m$, where $a_m=\cF_m(-1,m)=m+2$ by Lemma~\ref{lem:polar}, since $g_m(0,m)=0$. Because $g_m(k,l)=0$ when $4mk-l^2<0$, the term of index $j$ in $\delta_m(n,l)$ vanishes unless $4mn-l^2\ge-4m(1-j)$; so $\delta_m$ vanishes at discriminants below $-4m$, and the polar coefficients of $\phi_m/\Delta$ and of $\psi^F_m$ agree for $D'<-4m$ and differ by $\lambda_m\delta_m(D',l')$ for $-4m\le D'<0$. All polar coefficients $a_m(D',l')$ are listed in Appendix~\ref{app:data}.
 
 By \eqref{eq:thetadec} and \eqref{eq:hmod}, the functions $g_l(\tau)=\sum_Da_m(D,l)q^{D/4m}$, $l\in\ZZ/2m\ZZ$, form a vector-valued weakly holomorphic modular form of weight $w=-\frac{21}2$ for $\mathrm{SL}_2(\ZZ)$ (more precisely for its metaplectic double cover), with a representation $\rho$ determined by \eqref{eq:hmod}. The matrices in \eqref{eq:hmod} are unitary: the first is diagonal with entries of modulus one, and the second is a scalar of modulus one times $(2m)^{-1/2}(\e(lj/2m))_{l,j}$, whose rows are orthonormal. Hence $\rho$ is unitary. Put $\nu=1-w=\frac{23}2$. Exact formulae of the following kind for the coefficients of modular forms of negative weight go back to Rademacher and Zuckerman \cite{RZ38}.
 
@@ -569,7 +613,7 @@ Let $P$ be the sum over the polar terms of $a_m(D',l')$ times the corresponding 
 Absolute convergence: $I_\nu(t)\le(t/2)^\nu e^t/\Gamma(\nu+1)$ (Lemma~\ref{lem:besselupper}), so the term of index $c$ is $O(c^{-1}\varphi(c)c^{-\nu})=O(c^{-\nu})$ and $\nu>1$.
 \end{proof}
 
-As a check on the normalisation, the terms with $c=1$ of \eqref{eq:rademacher} reproduce the exact coefficients $a_m(n,l)$ computed from the definitions to a relative accuracy better than $2\cdot10^{-25}$ at the largest $n$ in our tables, for every $m\in\Mset$ and $0\le l\le m$ (Appendix~\ref{app:computation}).
+As a check on the normalisation, the terms with $c=1$ of \eqref{eq:rademacher} reproduce the exact coefficients $a_m(n,l)$ computed from the definitions to a relative accuracy better than $10^{-48}$ at the largest $n$ in our tables, for every $m\in\Mset$ and $0\le l\le m$ (Appendix~\ref{app:computation}).
 
 \subsection{Main term and error terms}
 For $(D',l')$ a polar term with $0\le l'\le m$, put $w_{l'}=1$ if $l'\in\{0,m\}$ and $w_{l'}=2$ otherwise; this is the number of classes $\pm l'$ modulo $2m$. Let
@@ -584,34 +628,34 @@ The terms with $c=1$ of \eqref{eq:rademacher} are
 \[
 -\frac{2\pi}{\sqrt{2m}}\sum_{(D',l')}w_{l'}\,a_m(D',l')\cos\Bigl(\frac{\pi ll'}{m}\Bigr)\Bigl(\frac{|D'|}{D}\Bigr)^{\nu/2}I_\nu\bigl(x_{D'}(D)\bigr),
 \]
-now with $0\le l'\le m$. For the most polar term, $\cos(\pi lm/m)=(-1)^l$, so its contribution to $F_m(D)=(-1)^{l+1}\cF_m(n,l)$ is exactly $T(D)$.
+now with $0\le l'\le m$. For the most polar term, $\cos(\pi lm/m)=(-1)^l$, so its contribution to $F_m(D,l)=(-1)^{l+1}\cF_m(n,l)$, $0\le l\le m$, is exactly $T(D)$, whatever the class $l$.
 
 \begin{proposition}\label{prop:decomp}
-Let $m\in\Mset$, let $D\ge4m$ with $D\equiv-l^2\pmod{4m}$, and let $\mathcal S$ be any set of polar terms. Then
+Let $m\in\Mset$, let $0\le l\le m$, let $D\ge4m$ with $D\equiv-l^2\pmod{4m}$, and let $\mathcal S$ be any set of polar terms. Then
 \[
-|F_m(D)-T(D)|\le E_1(D)+E_2(D)+E_3(D),
+|F_m(D,l)-T(D)|\le E_1(D)+E_2(D)+E_3(D),
 \]
 where, with $B_1(t)=e^t/\sqrt{2\pi t}$, $B_2(t)=(t/2)^\nu e^t/\Gamma(\nu+1)$ and $Z=\sum_{c\ge2}c^{-\nu}$,
 \begin{align*}
 E_1(D)&=\frac{2\pi}{\sqrt{2m}}\sum_{(D',l')\ne(-m(m+4),m)}w_{l'}|a_m(D',l')|\Bigl(\frac{|D'|}{D}\Bigr)^{\nu/2}B_{(D',l')}\bigl(x_{D'}(D)\bigr),\\
 E_2(D)&=\frac{2\pi Z}{\Gamma(\nu+1)}\sum_{(D',l')}w_{l'}|a_m(D',l')|\Bigl(\frac{|D'|}{D}\Bigr)^{\nu/2}\Bigl(\frac{x_{D'}(D)}2\Bigr)^{\nu}e^{x_{D'}(D)/2},\\
-E_3(D)&=\lambda_m\,\sigma(m)\,(D+4m+1)\Bigl(25+c_0\Bigl(\frac{D}{4m}\Bigr)^{-5}e^{2\pi\sqrt{D/m}}\Bigr),
+E_3(D)&=\lambda_m\,\sigma^*(m)\,(D+4m+1)\Bigl(25+c_0\Bigl(\frac{D}{4m}\Bigr)^{-5}e^{2\pi\sqrt{D/m}}\Bigr),
 \end{align*}
-$B_{(D',l')}=B_2$ for $(D',l')\in\mathcal S$ and $B_1$ otherwise, $\sigma(m)$ is the sum of the divisors of $m$, and $c_0=\prod_{k\ge1}(1-e^{-2\pi k})^{-24}<1.046$.
+$B_{(D',l')}=B_2$ for $(D',l')\in\mathcal S$ and $B_1$ otherwise, $\sigma(m)$ is the sum of the divisors of $m$, $\sigma^*(m)=\sigma(m)$ for $m=1$ or $m$ prime, $\sigma^*(p^k)=\sigma(p^k)+p\,\sigma(p^{k-2})$ for $k\ge2$, and $c_0=\prod_{k\ge1}(1-e^{-2\pi k})^{-24}<1.046$.
 \end{proposition}
 
 \begin{proof}
-By \eqref{eq:hdelta}, $F_m(D)=(-1)^{l+1}a_m(D,l)-(-1)^{l+1}\lambda_m\delta_m(n,l)$. In \eqref{eq:rademacher}, the terms with $c=1$ other than the main term are bounded in absolute value by $E_1(D)$, because $|\cos|\le1$ and $I_\nu\le B_1$, $I_\nu\le B_2$ (Lemma~\ref{lem:besselupper}). For $c\ge2$ we have $c^{-1}|K_c|\le c^{-1}\varphi(c)\le1$, and by the series of $I_\nu$, $I_\nu(t/c)\le(t/2c)^\nu e^{t/c}/\Gamma(\nu+1)\le c^{-\nu}(t/2)^\nu e^{t/2}/\Gamma(\nu+1)$; summing over $c\ge2$ and over the classes gives $E_2(D)$. The bound $\lambda_m|\delta_m(n,l)|\le E_3(D)$ is Lemma~\ref{lem:deltabound}.
+By \eqref{eq:hdelta}, $F_m(D,l)=(-1)^{l+1}a_m(D,l)-(-1)^{l+1}\lambda_m\delta_m(n,l)$. In \eqref{eq:rademacher}, the terms with $c=1$ other than the main term are bounded in absolute value by $E_1(D)$, because $|\cos|\le1$ and $I_\nu\le B_1$, $I_\nu\le B_2$ (Lemma~\ref{lem:besselupper}). For $c\ge2$ we have $c^{-1}|K_c|\le c^{-1}\varphi(c)\le1$, and by the series of $I_\nu$, $I_\nu(t/c)\le(t/2c)^\nu e^{t/c}/\Gamma(\nu+1)\le c^{-\nu}(t/2)^\nu e^{t/2}/\Gamma(\nu+1)$; summing over $c\ge2$ and over the classes gives $E_2(D)$. The bound $\lambda_m|\delta_m(n,l)|\le E_3(D)$ is Lemma~\ref{lem:deltabound}.
 \end{proof}
 
 \begin{lemma}\label{lem:deltabound}
-For $D=4mn-l^2\ge4m$ and $m\in\Mset$, $|\delta_m(n,l)|\le\sigma(m)(D+4m+1)\bigl(25+c_0(D/4m)^{-5}e^{2\pi\sqrt{D/m}}\bigr)$.
+For $D=4mn-l^2\ge4m$ and $m\in\Mset$, $|\delta_m(n,l)|\le\sigma^*(m)(D+4m+1)\bigl(25+c_0(D/4m)^{-5}e^{2\pi\sqrt{D/m}}\bigr)$.
 \end{lemma}
 
 \begin{proof}
-The term $j$ of \eqref{eq:hdelta} involves $h_m(k,l)$ with $k=n+1-j$, whose discriminant is $4mk-l^2=D+4m(1-j)$. It vanishes unless this is nonnegative, that is unless $j\le J$ with $J=1+D/4m$. For such $j$, \eqref{eq:HVm} and Lemma~\ref{lem:hurwitz} give $|h_m(k,l)|\le\sum_{d\mid m}d\,(D+4m+1)=\sigma(m)(D+4m+1)$. So
+The term $j$ of \eqref{eq:hdelta} involves $g_m(k,l)$ with $k=n+1-j$, whose discriminant is $N=4mk-l^2=D+4m(1-j)$. It vanishes unless $N\ge0$, that is unless $j\le J$ with $J=1+D/4m$. For such $j$, \eqref{eq:HVm} and Lemma~\ref{lem:hurwitz} give $|h_m(k,l)|\le\sum_{d\mid m}d\,(N+1)\le\sigma(m)(D+4m+1)$, and for $m=p^k$, $k\ge2$, the second term of $g_m(k,l)$ is $p\,h_{m/p^2}(k,l/p)$, whose argument has discriminant $N/p^2$, so it is at most $p\,\sigma(p^{k-2})(D+4m+1)$. Hence $|g_m(k,l)|\le\sigma^*(m)(D+4m+1)$ and
 \[
-|\delta_m(n,l)|\le\sigma(m)(D+4m+1)\sum_{0\le j\le J}\pf(j).
+|\delta_m(n,l)|\le\sigma^*(m)(D+4m+1)\sum_{0\le j\le J}\pf(j).
 \]
 Here $\pf(0)+\pf(1)=25$, and for $2\le j\le J$ Lemma~\ref{lem:partitions} gives $\pf(j)\le c_0\,t^{-6}e^{4\pi\sqrt t}$ with $t=j-1\in[1,J-1]$. The function $t^{-6}e^{4\pi\sqrt t}$ is increasing for $t\ge1$, since its logarithmic derivative $-6/t+2\pi/\sqrt t$ is positive for $t>9/\pi^2$. There are at most $J-1$ such $j$, so their sum is at most $(J-1)c_0(J-1)^{-6}e^{4\pi\sqrt{J-1}}$, and $J-1=D/4m\ge1$, $4\pi\sqrt{D/4m}=2\pi\sqrt{D/m}$.
 \end{proof}
@@ -710,7 +754,7 @@ Let $m\in\Mset$ and let $D^*_m$ be the number in Table~\ref{tab:tail}. In Propos
 \]
 By Proposition~\ref{prop:decomp} and Lemma~\ref{lem:besselower}, for $D\ge4m$,
 \begin{equation}\label{eq:FT}
-|F_m(D)-T(D)|\le\varepsilon(D)\,T_{\rm low}(D)\le\varepsilon(D)\,T(D).
+|F_m(D,l)-T(D)|\le\varepsilon(D)\,T_{\rm low}(D)\le\varepsilon(D)\,T(D)\qquad(0\le l\le m,\ D\equiv-l^2\ (4m)).
 \end{equation}
 
 \begin{lemma}\label{lem:mono}
@@ -748,19 +792,30 @@ The quantities $T_{\rm low}$, $E_1$, $E_2$, $E_3$, $\gamma$ and $\Theta_m$ are e
 \toprule
 $m$ & $D^*_m$ & $E_1/T_{\rm low}$ & $E_2/T_{\rm low}$ & $E_3/T_{\rm low}$ & $\varepsilon_m$ & $\gamma_m$ & $\Theta_m$ & $\sqrt{D^*_m}$\\
 \midrule
-1 & 680 & $7.46\cdot10^{-9}$ & $2.38\cdot10^{-27}$ & $0.1962$ & $0.19612$ & $0.39455$ & $6.743$ & $26.07$\\
-2 & 371 & $1.92\cdot10^{-5}$ & $4.37\cdot10^{-13}$ & $0.1932$ & $0.19289$ & $0.39282$ & $5.008$ & $19.26$\\
-3 & 292 & $9.17\cdot10^{-4}$ & $2.82\cdot10^{-9}$ & $0.1855$ & $0.18543$ & $0.38075$ & $5.419$ & $17.08$\\
-5 & 258 & $0.04356$ & $6.42\cdot10^{-7}$ & $0.1292$ & $0.17271$ & $0.35171$ & $6.170$ & $16.06$\\
-7 & 313 & $0.1445$ & $4.38\cdot10^{-7}$ & $0.00919$ & $0.15369$ & $0.30931$ & $6.603$ & $17.69$\\
-11 & 720 & $0.1074$ & $1.68\cdot10^{-11}$ & $4.22\cdot10^{-9}$ & $0.10667$ & $0.21356$ & $7.088$ & $26.83$\\
-13 & 1030 & $0.09065$ & $2.67\cdot10^{-14}$ & $4.37\cdot10^{-13}$ & $0.090641$ & $0.18169$ & $7.238$ & $32.09$\\
+1 & 680 & $7.46\cdot10^{-9}$ & $2.37\cdot10^{-27}$ & $0.1962$ & $0.19612$ & $0.39455$ & $6.742$ & $26.07$\\
+2 & 371 & $1.92\cdot10^{-5}$ & $4.37\cdot10^{-13}$ & $0.1929$ & $0.19289$ & $0.39282$ & $5.008$ & $19.26$\\
+3 & 292 & $9.16\cdot10^{-4}$ & $2.82\cdot10^{-9}$ & $0.1846$ & $0.18542$ & $0.38076$ & $5.418$ & $17.08$\\
+4 & 281 & $0.007143$ & $4.97\cdot10^{-8}$ & $0.1696$ & $0.17667$ & $0.35941$ & $5.853$ & $16.76$\\
+5 & 258 & $0.04355$ & $6.41\cdot10^{-7}$ & $0.1292$ & $0.17271$ & $0.35172$ & $6.169$ & $16.06$\\
+7 & 313 & $0.1445$ & $4.37\cdot10^{-7}$ & $0.009184$ & $0.15369$ & $0.30931$ & $6.603$ & $17.69$\\
+8 & 388 & $0.1387$ & $5.59\cdot10^{-8}$ & $0.001022$ & $0.13972$ & $0.28094$ & $6.758$ & $19.69$\\
+9 & 481 & $0.1276$ & $4.88\cdot10^{-9}$ & $2.12\cdot10^{-5}$ & $0.12757$ & $0.25548$ & $6.887$ & $21.93$\\
+11 & 720 & $0.1067$ & $1.67\cdot10^{-11}$ & $4.22\cdot10^{-9}$ & $0.10667$ & $0.21356$ & $7.088$ & $26.83$\\
+13 & 1030 & $0.09065$ & $2.67\cdot10^{-14}$ & $4.37\cdot10^{-13}$ & $0.090641$ & $0.18170$ & $7.238$ & $32.09$\\
+16 & 1624 & $0.07362$ & $7.07\cdot10^{-19}$ & $2.82\cdot10^{-19}$ & $0.073618$ & $0.14734$ & $7.403$ & $40.29$\\
+17 & 1857 & $0.06914$ & $1.77\cdot10^{-20}$ & $4.84\cdot10^{-22}$ & $0.069139$ & $0.13842$ & $7.447$ & $43.09$\\
+19 & 2375 & $0.06166$ & $9.08\cdot10^{-24}$ & $6.84\cdot10^{-27}$ & $0.061652$ & $0.12331$ & $7.523$ & $48.73$\\
+23 & 3630 & $0.05039$ & $1.19\cdot10^{-30}$ & $3.39\cdot10^{-37}$ & $0.050390$ & $0.10080$ & $7.959$ & $60.24$\\
+25 & 4370 & $0.04609$ & $3.23\cdot10^{-34}$ & $1.82\cdot10^{-42}$ & $0.046082$ & $0.092229$ & $8.596$ & $66.10$\\
+27 & 5185 & $0.04247$ & $7.59\cdot10^{-38}$ & $6.81\cdot10^{-48}$ & $0.042470$ & $0.084941$ & $9.232$ & $72.00$\\
+29 & 6079 & $0.03933$ & $1.53\cdot10^{-41}$ & $7.36\cdot10^{-54}$ & $0.039324$ & $0.078657$ & $9.869$ & $77.96$\\
+31 & 7052 & $0.03660$ & $2.70\cdot10^{-45}$ & $1.11\cdot10^{-59}$ & $0.036592$ & $0.073196$ & $10.51$ & $83.97$\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{theorem}[Tail lemma]\label{thm:tail}
-Let $m\in\Mset$, and let $D,D'$ be discriminants of charges of index $m$ with $D^*_m\le D'\le D-4$. Then $F_m(D)>F_m(D')>0$.
+Let $m\in\Mset$, let $l,l'\in\{0,\dots,m\}$, and let $D\equiv-l^2$, $D'\equiv-l'^2\pmod{4m}$ with $D^*_m\le D'\le D-4$. Then $F_m(D,l)>F_m(D',l')>0$.
 \end{theorem}
 
 \begin{proof}
@@ -768,9 +823,9 @@ Write $\varepsilon'=\varepsilon(D')$ and $\gamma'=\gamma(D')$. By Lemma~\ref{lem
 \[
 2\varepsilon'\le2\varepsilon(D^*_m)\sqrt{D^*_m/D'}<\gamma(D^*_m)\sqrt{D^*_m/D'}\le\gamma' .
 \]
-By \eqref{eq:FT}, $F_m(D')\ge(1-\varepsilon')T(D')>0$. By Lemma~\ref{lem:gap} and the monotonicity of $T$, $T(D')\le(1-\gamma')T(D'+4)\le(1-\gamma')T(D)$. Therefore
+By \eqref{eq:FT}, $F_m(D',l')\ge(1-\varepsilon')T(D')>0$. By Lemma~\ref{lem:gap} and the monotonicity of $T$, $T(D')\le(1-\gamma')T(D'+4)\le(1-\gamma')T(D)$. Therefore
 \[
-F_m(D)-F_m(D')\ge(1-\varepsilon(D))T(D)-(1+\varepsilon')(1-\gamma')T(D)\ge\bigl(\gamma'(1+\varepsilon')-2\varepsilon'\bigr)T(D)>0.\qedhere
+F_m(D,l)-F_m(D',l')\ge(1-\varepsilon(D))T(D)-(1+\varepsilon')(1-\gamma')T(D)\ge\bigl(\gamma'(1+\varepsilon')-2\varepsilon'\bigr)T(D)>0.\qedhere
 \]
 \end{proof}
 
@@ -778,56 +833,56 @@ Figure~\ref{fig:tail} shows $\varepsilon_m$ against $\gamma_m/2$ on both sides o
 
 \begin{figure}[ht]\centering
 \includegraphics[width=\textwidth]{fig_tail.png}
-\caption{Left: the relative error bound $\varepsilon_m(D)$ (solid) and half the relative gap $\gamma_m(D)/2$ (dashed) for $m\in\Mset$; the dots mark $\varepsilon_m(D^*_m)$. Right: the ratio $2\varepsilon_m/\gamma_m$ against $D/D^*_m$. The tail lemma needs this ratio below $1$ at $D^*_m$; Lemmas~\ref{lem:gap} and~\ref{lem:mono} then keep it below $1$ for all larger $D$. For $m=1,2,3$ the class number term $E_3$ dominates the error, for $m=7,11,13$ the second polar term does.}\label{fig:tail}
+\caption{Left: the relative error bound $\varepsilon_m(D)$ (solid) and half the relative gap $\gamma_m(D)/2$ (dashed) for $m\in\Mset$; the dots mark $\varepsilon_m(D^*_m)$. Right: the ratio $2\varepsilon_m/\gamma_m$ against $D/D^*_m$. The tail lemma needs this ratio below $1$ at $D^*_m$; Lemmas~\ref{lem:gap} and~\ref{lem:mono} then keep it below $1$ for all larger $D$. For $m\le5$ the class number term $E_3$ dominates the error, for $m\ge7$ the second polar term does.}\label{fig:tail}
 \end{figure}
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.86\textwidth]{fig_growth.png}
-\caption{The single-centred index $F_m(D)$ at the discriminants of reduced charges with $D\le1000$ (dots), and the main term $T_m(D)$ of \eqref{eq:mainterm} (lines), on a logarithmic scale. At $D=1000$ the index has between $46$ digits ($m=11,13$) and $83$ digits ($m=1$); the relative difference between dots and lines is below $\varepsilon_m(D)$ once $D\ge D^*_m$.}\label{fig:growth}
+\caption{The single-centred index $F_m(D)$ at the discriminants of reduced charges with $D\le7200$ (dots), and the main term $T_m(D)$ of \eqref{eq:mainterm} (lines), on a logarithmic scale, for $m=1,2,3,5,9,16,31$. Near $D=7200$ the index has $241$ digits for $m=1$ and $118$ digits for $m=31$; the relative difference between dots and lines is below $\varepsilon_m(D)$ once $D\ge D^*_m$.}\label{fig:growth}
 \end{figure}
 
 \section{Proof of Theorem~\ref{thm:B} and Corollary~\ref{cor:C}}\label{sec:proofB}
 
 Let $m\in\Mset$. Define
 \[
-M_m=\max\Bigl(\max_{\substack{c\le a\le m,\ 0\le b\le c\\4ac-b^2>0}}(-1)^{b+1}\cF_c(a,b),\ \ \max_{0<D'<D^*_m}F_m(D')\Bigr),
+M_m=\max\Bigl(\max_{\substack{c\le a\le m,\ 0\le b\le c\\4ac-b^2>0}}(-1)^{b+1}\cF_c(a,b),\ \ \max_{\substack{0<D'<D^*_m\\0\le l'\le m}}F_m(D',l')\Bigr),
 \]
-the second maximum over discriminants of charges of index $m$, and let $D_1\ge D^*_m$ be the smallest such discriminant with $F_m(D_1)>M_m$. These numbers are in Table~\ref{tab:finite}.
+the second maximum over the pairs with $D'\equiv-l'^2\pmod{4m}$, and let $D_1\ge D^*_m$ be the smallest discriminant of index $m$ such that $F_m(D_1,l_1)>M_m$ for some class $l_1$. These numbers are in Table~\ref{tab:finite}; in every case $D_1+4\le7201$ and $4m^2<D^*_m$.
 
 \begin{table}[ht]\centering
-\caption{Data for the proof of Theorem~\ref{thm:B}. The last two columns count the charges with $1000<D<D_1+4$ checked directly, and the reduced forms $[a,b,m]$ with $0<D<D^*_m$ checked for Corollary~\ref{cor:C}.}\label{tab:finite}
+\caption{Data for the proof of Theorem~\ref{thm:B}. The column $F_m(D_1)/M_m$ gives the largest value of $F_m(D_1,l_1)/M_m$ over the classes $l_1$.}\label{tab:finite}
 \small
-\begin{tabular}{rrrrrrr}
+\begin{tabular}{rrrrr@{\qquad}rrrrr}
 \toprule
-$m$ & $D^*_m$ & $M_m$ & $D_1$ & $F_m(D_1)/M_m$ & direct charges & reduced forms\\
+$m$ & $D^*_m$ & $M_m$ & $D_1$ & $F_m(D_1)/M_m$ & $m$ & $D^*_m$ & $M_m$ & $D_1$ & $F_m(D_1)/M_m$\\
 \midrule
-1 & 680 & $4.687\cdot10^{66}$ & 680 & 1.134 & 0 & 339\\
-2 & 371 & $1.586\cdot10^{36}$ & 372 & 1.656 & 0 & 135\\
-3 & 292 & $2.446\cdot10^{28}$ & 296 & 1.831 & 0 & 89\\
-5 & 258 & $2.241\cdot10^{24}$ & 259 & 1.396 & 0 & 53\\
-7 & 313 & $1.295\cdot10^{26}$ & 315 & 1.440 & 0 & 43\\
-11 & 720 & $3.019\cdot10^{38}$ & 723 & 1.682 & 0 & 82\\
-13 & 1030 & $5.873\cdot10^{45}$ & 1031 & 1.199 & 148 & 118\\
+1 & 680 & $4.69\cdot10^{66}$ & 680 & $1.13$ & 13 & 1030 & $5.87\cdot10^{45}$ & 1031 & $1.19$\\
+2 & 371 & $1.59\cdot10^{36}$ & 372 & $1.65$ & 16 & 1624 & $1.03\cdot10^{57}$ & 1628 & $1.25$\\
+3 & 292 & $2.45\cdot10^{28}$ & 296 & $1.83$ & 17 & 1857 & $6.78\cdot10^{60}$ & 1868 & $1.63$\\
+4 & 281 & $1.67\cdot10^{26}$ & 284 & $1.75$ & 19 & 2375 & $3.25\cdot10^{68}$ & 2375 & $1.13$\\
+5 & 258 & $2.24\cdot10^{24}$ & 259 & $1.39$ & 23 & 3630 & $2.00\cdot10^{84}$ & 3631 & $1.09$\\
+7 & 313 & $1.30\cdot10^{26}$ & 315 & $1.44$ & 25 & 4370 & $1.88\cdot10^{92}$ & 4371 & $1.15$\\
+8 & 388 & $5.95\cdot10^{28}$ & 391 & $1.71$ & 27 & 5185 & $2.50\cdot10^{100}$ & 5192 & $1.18$\\
+9 & 481 & $7.44\cdot10^{31}$ & 488 & $1.97$ & 29 & 6079 & $2.84\cdot10^{108}$ & 6083 & $1.34$\\
+11 & 720 & $3.02\cdot10^{38}$ & 723 & $1.68$ & 31 & 7052 & $5.40\cdot10^{116}$ & 7052 & $1.08$\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{proof}[Proof of Theorem~\ref{thm:B}]
-Let $n$ and $J\ge0$ be integers with $D=4mn-J^2>0$. If $D\le1000$, then $d(n,J,m)>0$ by Theorem~\ref{thm:A}. Let $D>1000$. Since $4m^2\le676<D$, Lemma~\ref{lem:secondcharge} shows that the reduced form of $(n,J,m)$ has $c=m$, so $\dstar(n,J,m)=F_m(D)$ by Lemma~\ref{lem:Fwell}. Put $D'=4mn-(J+2)^2=D-4(J+1)$, the discriminant of the second charge.
+Let $n$ and $J\ge0$ be integers with $D=4mn-J^2>0$. If $D\le7200$, then $d(n,J,m)>0$ by Theorem~\ref{thm:A}. Let $D>7200$. Since $4m^2\le3844<D$, Lemma~\ref{lem:secondcharge} shows that the reduced form of $(n,J,m)$ is $[a,b,m]$, so $\dstar(n,J,m)=F_m(D,b)$ by Lemma~\ref{lem:Fwell}. Put $D'=4mn-(J+2)^2=D-4(J+1)$, the discriminant of the second charge.
 
-\emph{Case $D'\le0$.} Then $\dstar(n,J+2,m)=0$ and $d(n,J,m)=\dstar(n,J,m)$, which is positive by Corollary~\ref{cor:C}; its proof below does not use Theorem~\ref{thm:B}.
+\emph{Case $D'\le0$.} Then $\dstar(n,J+2,m)=0$ and $d(n,J,m)=\dstar(n,J,m)=F_m(D,b)$, which is positive by \eqref{eq:FT} because $D>D^*_m$ and $\varepsilon_m(D)<\frac12$ (Proposition~\ref{prop:certificate} and Lemma~\ref{lem:mono}).
 
-\emph{Case $D'\ge D^*_m$.} Then $D'>4m^2$, so the reduced form of $(n,J+2,m)$ also has $c=m$ by Lemma~\ref{lem:secondcharge}, and $\dstar(n,J+2,m)=F_m(D')$. Since $D'\le D-4$, Theorem~\ref{thm:tail} gives $F_m(D)>F_m(D')$.
+\emph{Case $D'\ge D^*_m$.} Then $D'>4m^2$, so the reduced form of $(n,J+2,m)$ is $[a',b',m]$ by Lemma~\ref{lem:secondcharge}, and $\dstar(n,J+2,m)=F_m(D',b')$. Since $D'\le D-4$, Theorem~\ref{thm:tail} gives $F_m(D,b)>F_m(D',b')$.
 
-\emph{Case $0<D'<D^*_m$.} By Lemma~\ref{lem:secondcharge}, the reduced form $(a,b,c)$ of $(n,J+2,m)$ has $c=m$, and then $\dstar(n,J+2,m)=F_m(D')\le M_m$, or it has $c\le a\le m$, and then $\dstar(n,J+2,m)=(-1)^{b+1}\cF_c(a,b)\le M_m$. If $D\ge D_1+4$, Theorem~\ref{thm:tail} gives $F_m(D)>F_m(D_1)>M_m\ge\dstar(n,J+2,m)$. If $1000<D<D_1+4$, which happens only for $m=13$, then $J<D/4$ and the charge is among those checked directly.
+\emph{Case $0<D'<D^*_m$.} By Lemma~\ref{lem:secondcharge}, the reduced form $[a',b',c']$ of $(n,J+2,m)$ has $c'=m$, and then $\dstar(n,J+2,m)=F_m(D',b')\le M_m$, or it has $c'\le a'\le m$, and then $\dstar(n,J+2,m)=(-1)^{b'+1}\cF_{c'}(a',b')\le M_m$. Since $D\ge7201\ge D_1+4$, Theorem~\ref{thm:tail} gives $F_m(D,b)>F_m(D_1,l_1)>M_m\ge\dstar(n,J+2,m)$.
 
 In every case $d(n,J,m)>0$.
 \end{proof}
 
-The direct check for $m=13$ computes $d(n,J,13)$ exactly for the $148$ charges with $1000<D<1035$ and $0\le J\le D/4$ from the tables of Appendix~\ref{app:computation}, using reduced forms for both terms; all values are positive.
-
 \begin{proof}[Proof of Corollary~\ref{cor:C}]
-Let $(a,b,c)$ be the reduced form of $(n,l,m')$, with $c\in\Mset$ and $D>0$. By \eqref{eq:dstar} and Lemma~\ref{lem:Fwell}, $\dstar(n,l,m')=(-1)^{b+1}\cF_c(a,b)=F_c(D)$. If $D\ge D^*_c$, this is positive by \eqref{eq:FT}, because $\varepsilon_c(D)<\frac12$ by Proposition~\ref{prop:certificate} and Lemma~\ref{lem:mono}. If $D<D^*_c$, the reduced form $[a,b,c]$ is one of the forms counted in the last column of Table~\ref{tab:finite}, and all of them have $(-1)^{b+1}\cF_c(a,b)>0$.
+Let $[a,b,c]$ be the reduced form of $(n,l,m')$, with $c\in\Mset$ and $D>0$. By Lemma~\ref{lem:Fwell}, $\dstar(n,l,m')=F_c(D,b)$. If $D\ge D^*_c$, this is positive by \eqref{eq:FT}, because $\varepsilon_c(D)<\frac12$ by Proposition~\ref{prop:certificate} and Lemma~\ref{lem:mono}. If $D<D^*_c$, then $D<7200$ and $\dstar(n,l,m')>0$ by Theorem~\ref{thm:A}.
 \end{proof}
 
 Figure~\ref{fig:index3d} shows the index $d(n,J,7)$ over the region $D\le1000$.
@@ -839,15 +894,15 @@ Figure~\ref{fig:index3d} shows the index $d(n,J,7)$ over the region $D\le1000$.
 
 \section{Proof of Theorem~\ref{thm:A}}\label{sec:proofA}
 
-\emph{Four dimensions.} Every charge with $0<D\le1000$ has a reduced form $(a,b,c)$ with $0<4ac-b^2\le1000$, and then $3c^2\le D\le1000$ by Lemma~\ref{lem:minima}(iv), so $c\le18$. We computed $\cF_c(a,b)$ exactly for all $c\le19$ and all $(a,b)$ with $4ac-b^2\le1000$ (Appendix~\ref{app:computation}). There are $3447$ reduced forms with $0<D\le1000$, and $(-1)^{b+1}\cF_c(a,b)>0$ for each of them.
+\emph{Four dimensions.} Every charge with $0<D\le7200$ has a reduced form $[a,b,c]$ with $0<4ac-b^2\le7200$, and then $3c^2\le D\le7200$ by Lemma~\ref{lem:minima}(iv), so $c\le48$. We computed $\cF_c(a,b)$ exactly for all $c\le49$ and all $(a,b)$ with $4ac-b^2\le7200$ (Appendix~\ref{app:computation}). There are $60\,016$ reduced forms with $0<D\le7200$, and $(-1)^{b+1}\cF_c(a,b)>0$ for each of them.
 
-\emph{Five dimensions.} Let $0<D=4mn-J^2\le1000$. If $4(J+1)\ge D$, the second term of \eqref{eq:drot} vanishes and $d(n,J,m)=\dstar(n,J,m)>0$ by the four-dimensional part. Otherwise $J<D/4\le250$, and $m$ divides $(D+J^2)/4$; so there are finitely many such charges, $568\,879$ in all. For each of them we computed both terms of \eqref{eq:drot} exactly through their reduced forms, and $d(n,J,m)>0$ in every case. \qed
+\emph{Five dimensions.} Let $0<D=4mn-J^2\le7200$. If $4(J+1)\ge D$, the second term of \eqref{eq:drot} vanishes and $d(n,J,m)=\dstar(n,J,m)>0$ by the four-dimensional part. Otherwise $J<D/4\le1800$, and $m$ divides $(D+J^2)/4$; so there are finitely many such charges. For all charges with $0<D\le7200$ and $0\le J\le1801$, $41\,652\,989$ in all, we computed both terms of \eqref{eq:drot} exactly through their reduced forms, and $d(n,J,m)>0$ in every case. \qed
 
-The smallest relative margin $d(n,J,m)/\dstar(n,J,m)$ among these charges is $0.18852$, at $(m,n,J)=(13,19,0)$, where $D=988$ and the second charge has $D'=984$. Figure~\ref{fig:margins} shows all the margins.
+The smallest relative margin $d(n,J,m)/\dstar(n,J,m)$ among these charges is $0.0723$, attained at $m=40$, $n=45$, $J=0$, where $D=7200$. Figure~\ref{fig:margins} shows the margins.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.86\textwidth]{fig_margins.png}
-\caption{The relative margin $d(n,J,m)/\dstar(n,J,m)$ for all five-dimensional charges with $D\le1000$ and $4(J+1)<D$, coloured by $\log m$. The margin is smallest when $J=0$, where the two discriminants $D$ and $D-4$ are closest, and when $m$ is large, where the growth rate $\alpha_m=\pi\sqrt{(m+4)/m}$ is smallest.}\label{fig:margins}
+\caption{Left: the relative margin $d(n,J,m)/\dstar(n,J,m)$ for all five-dimensional charges with $4(J+1)<D\le1000$, coloured by $\log m$; for $4(J+1)\ge D$ the margin is $1$. Right: the least relative margin among all charges of discriminant $D$, for $D\le7200$. The smallest margins occur at $J=0$, where the two discriminants $D$ and $D-4$ are closest.}\label{fig:margins}
 \end{figure}
 
 \section{Remarks}\label{sec:remarks}
@@ -861,10 +916,10 @@ If the index at fixed angular momentum is computed from the coefficients of a si
 \end{figure}
 
 \subsection*{Composite and larger indices}
-For composite $m$ two things fail. The value of $\cF_m(n,l)$ is no longer a function of $D$ alone (Lemma~\ref{lem:Fwell}), and $\Delta\psi^F_m$ is not a weak Jacobi form plus a multiple of $\Hc|V_m$ (Remark~\ref{rem:composite}). Some other mock modular correction is then needed, and we have not determined it. For primes $m\ge17$, Theorem~\ref{thm:D} holds, but the certificate of Proposition~\ref{prop:certificate}, applied with the same choices, holds at $D^*_{17}=1857$ and $D^*_{19}=2375$ but fails one unit below, and these values lie beyond our tables, which end at $D\approx1000$. Extending the tables to larger discriminants and repeating the finite part of Section~\ref{sec:proofB} would extend Theorem~\ref{thm:B} to these primes.
+Two obstacles separate Theorem~\ref{thm:B} from all charges. When $m$ has two distinct prime factors, $\Delta\psi^F_m$ is not a weak Jacobi form plus a combination of the functions $\Hc|V_{m/e^2}|U_e$ (Remark~\ref{rem:composite}); the mock modular correction is then a different object, and we have not determined it. Such $m$ are reached by Theorem~\ref{thm:A} only for $D\le7200$. For prime powers $m\ge32$, Theorem~\ref{thm:D} holds and the tail certificate applies with the same choices, but its threshold grows: it holds at $D^*_{32}=7569$ and $D^*_{37}=10\,456$ and fails one unit below. The next polar term after the most polar one is $(D',l')=(-(m+1)^2,m-1)$, with exponential rate $a_{D'}=\pi(m+1)/m$, and $\alpha_m-a_{D'}=\pi/m+O(m^{-2})$. Its contribution relative to the main term therefore decays only like $e^{-\pi\sqrt D/m}$, the certificate needs $\sqrt{D^*_m}$ to grow at least linearly in $m$, and with it grows the range of discriminants on which the finite part of Section~\ref{sec:proofB} must be computed.
 
 \subsection*{Size of the margins}
-The proof of Theorem~\ref{thm:B} is tightest for $m=1$, where $2\varepsilon_1(D^*_1)/\gamma_1(D^*_1)=0.994$; there the error comes from the class number term, whose coefficient $\lambda_1=648$ is large compared with the main term at moderate $D$. For $m\ge7$ the class number term is negligible and the next polar term, at $(D',l')=(-4m-(m-1)^2,m-1)$, limits the estimate. In the finite range the smallest relative margin is $0.1885$ (Section~\ref{sec:proofA}); the index at fixed angular momentum is never close to zero relative to $\dstar$.
+The proof of Theorem~\ref{thm:B} is tightest for $m=1$, where $2\varepsilon_1(D^*_1)/\gamma_1(D^*_1)=0.994$; there the error comes from the class number term, whose coefficient $\lambda_1=648$ is large compared with the main term at moderate $D$. For $m\ge7$ the class number term is negligible and the next polar term, at $(D',l')=(-(m+1)^2,m-1)$, limits the estimate. In the finite range the smallest relative margin is $0.0723$ (Section~\ref{sec:proofA}); the index at fixed angular momentum is never close to zero relative to $\dstar$.
 
 \subsection*{Other charges}
 Theorems~\ref{thm:A} and~\ref{thm:B} concern charges of torsion one, for which the generating function $1/\Phi_{10}$ is known. For charges of higher torsion, and for the CHL orbifolds of type~II string theory on K3, the method needs two inputs: an analogue of Theorem~\ref{thm:D} that identifies the mock modular part of the finite part, and a tail estimate of the kind proved in Section~\ref{sec:tail}.
@@ -884,7 +939,7 @@ Theorems~\ref{thm:A} and~\ref{thm:B} concern charges of torsion one, for which t
 \section{Data}\label{app:data}
 
 \subsection*{The weak Jacobi forms \texorpdfstring{$\phi_m$}{phi\_m}}
-Write $B=2\phi_{0,1}$. The forms $\phi_m=\Delta\psi^F_m+\lambda_m\Hc|V_m$ of Theorem~\ref{thm:D} are
+Write $B=2\phi_{0,1}$. For $m=1$ and prime $m$ the class number term is $\mathcal G_m=\Hc|V_m$, and the forms $\phi_m=\Delta\psi^F_m+\lambda_m\Hc|V_m$ of Theorem~\ref{thm:D} are
 \[
 \phi_1=3E_4A,\qquad \phi_2=\tfrac{11}{3}E_4AB-\tfrac{10}{3}E_6A^2,
 \]
@@ -938,10 +993,10 @@ $E_4^{3} E_6 A^{8} B^{5}$ & $\tfrac{3161174131}{55037657088}$ & $E_4^{7} A^{13}$
 $E_4^{2} E_6^{2} A^{9} B^{4}$ & $\tfrac{139668317891}{165112971264}$ & & \\
 \end{tabular}}\par\medskip
 
-The constants are $\lambda_1=648$, $\lambda_2=3200$, $\lambda_3=25650$, $\lambda_5=1073720$, $\lambda_7=30178575$, $\lambda_{11}=10914317934$ and $\lambda_{13}=156883829400$; for $m\ge2$ they are $\pf(m+1)$, and the linear algebra of Section~\ref{sec:completion} recovers each of them as the coefficient of $\Hc|V_m$.
+The constants are $\lambda_1=648$, $\lambda_2=3200$, $\lambda_3=25650$, $\lambda_5=1073720$, $\lambda_7=30178575$, $\lambda_{11}=10914317934$ and $\lambda_{13}=156883829400$; for $m\ge2$ they are $\pf(m+1)$, and the linear algebra of Section~\ref{sec:completion} recovers each of them as the coefficient of $\mathcal G_m$.
 
 \subsection*{Polar terms}
-The polar terms $(D',l')$, $0\le l'\le m$, of $\phi_m/\Delta$ and the coefficients $a_m(D',l')$ entering \eqref{eq:rademacher} are listed below. The first entry is the most polar term $(-m(m+4),m)$ with coefficient $m+2$. The entry $(-4m,0)$ is the only one that differs from the corresponding coefficient of $\psi^F_m$, by $-\lambda_m\sigma(m)/12$.
+The polar terms $(D',l')$, $0\le l'\le m$, of $\phi_m/\Delta$ and the coefficients $a_m(D',l')$ entering \eqref{eq:rademacher} are listed below. The first entry is the most polar term $(-m(m+4),m)$ with coefficient $m+2$. An entry with $-4m\le D'<0$ differs from the corresponding coefficient of $\psi^F_m$ by $\lambda_m\delta_m(D',l')$, the contribution of the class number form $\lambda_mG_m$; in particular the entry $(-4m,0)$ receives $\lambda_m g_m(0,0)$, which by $H(0)=-1/12$ equals $-\lambda_m\sigma(m)/12$ for $m=1$ and $m$ prime, and $-\lambda_m\bigl(\sigma(p^k)-p\,\sigma(p^{k-2})\bigr)/12$ for $m=p^k$ with $k\ge2$. All other entries are coefficients of $\psi^F_m$.
 
 \medskip
 
@@ -960,6 +1015,12 @@ $(-21,3)$ & $5$ & $(-12,0)$ & $-2146$ & $(-1,1)$ & $110826$ \\
 $(-16,2)$ & $96$ & $(-9,3)$ & $10278$ & & \\
 $(-13,1)$ & $972$ & $(-4,2)$ & $41250$ & & \\
 \end{tabular}}\par\medskip
+\noindent$m=4$:\nopagebreak\\[2pt]
+{\small\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-32,4)$ & $6$ & $(-17,1)$ & $9600$ & $(-9,3)$ & $199584$ \\
+$(-25,3)$ & $120$ & $(-16,0)$ & $-22044$ & $(-4,2)$ & $272256$ \\
+$(-20,2)$ & $1296$ & $(-16,4)$ & $16992$ & $(-1,1)$ & $1053288$ \\
+\end{tabular}}\par\medskip
 \noindent$m=5$:\nopagebreak\\[2pt]
 {\small\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
 $(-45,5)$ & $7$ & $(-24,2)$ & $12800$ & $(-9,3)$ & $1304192$ \\
@@ -975,6 +1036,27 @@ $(-53,5)$ & $2268$ & $(-29,1)$ & $3222780$ & $(-8,6)$ & $64504998$ \\
 $(-49,7)$ & $4032$ & $(-28,0)$ & $-8155458$ & $(-4,2)$ & $113142510$ \\
 $(-44,4)$ & $19200$ & $(-25,5)$ & $10443525$ & $(-1,1)$ & $213270204$ \\
 $(-37,3)$ & $128250$ & $(-21,7)$ & $30703455$ & & \\
+\end{tabular}}\par\medskip
+\noindent$m=8$:\nopagebreak\\[2pt]
+{\small\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-96,8)$ & $10$ & $(-41,3)$ & $881280$ & $(-17,7)$ & $291552000$ \\
+$(-81,7)$ & $216$ & $(-36,2)$ & $4295024$ & $(-16,4)$ & $88514880$ \\
+$(-68,6)$ & $2592$ & $(-36,6)$ & $460800$ & $(-9,3)$ & $507090312$ \\
+$(-64,8)$ & $4608$ & $(-33,1)$ & $17807488$ & $(-4,2)$ & $293278848$ \\
+$(-57,5)$ & $22400$ & $(-32,0)$ & $-46325820$ & $(-4,6)$ & $319626000$ \\
+$(-49,7)$ & $54432$ & $(-32,8)$ & $36425856$ & $(-1,1)$ & $1326869904$ \\
+$(-48,4)$ & $153900$ & $(-25,5)$ & $146262000$ & & \\
+\end{tabular}}\par\medskip
+\noindent$m=9$:\nopagebreak\\[2pt]
+{\small\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-117,9)$ & $11$ & $(-49,7)$ & $537600$ & $(-25,5)$ & $660400140$ \\
+$(-100,8)$ & $240$ & $(-45,3)$ & $5368607$ & $(-16,4)$ & $1381606824$ \\
+$(-85,7)$ & $2916$ & $(-45,9)$ & $734832$ & $(-13,7)$ & $1959301872$ \\
+$(-81,9)$ & $5184$ & $(-40,2)$ & $23723928$ & $(-9,3)$ & $641927340$ \\
+$(-72,6)$ & $25600$ & $(-37,1)$ & $90663975$ & $(-9,9)$ & $903535672$ \\
+$(-64,8)$ & $62208$ & $(-36,0)$ & $-242044726$ & $(-4,2)$ & $3419104860$ \\
+$(-61,5)$ & $179550$ & $(-36,6)$ & $110235150$ & $(-1,1)$ & $5612232504$ \\
+$(-52,4)$ & $1057536$ & $(-28,8)$ & $645470100$ & & \\
 \end{tabular}}\par\medskip
 \noindent$m=11$:\nopagebreak\\[2pt]
 {\small\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
@@ -1005,6 +1087,398 @@ $(-101,7)$ & $9663480$ & $(-52,0)$ & $-96093457164$ & $(-1,1)$ & $1672865232240$
 $(-100,10)$ & $6156000$ & $(-49,7)$ & $53290933296$ & & \\
 $(-92,12)$ & $10368000$ & $(-48,10)$ & $78898770252$ & & \\
 \end{tabular}}\par\medskip
+\noindent$m=16$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-320,16)$ & $18$ & $(-81,9)$ & $6518572200$ \\
+$(-289,15)$ & $408$ & $(-80,4)$ & $65487317652$ \\
+$(-260,14)$ & $5184$ & $(-80,12)$ & $3478852800$ \\
+$(-256,16)$ & $9216$ & $(-73,3)$ & $210990569472$ \\
+$(-233,13)$ & $48000$ & $(-68,2)$ & $628394424192$ \\
+$(-225,15)$ & $116640$ & $(-68,14)$ & $5640192000$ \\
+$(-208,12)$ & $359100$ & $(-65,1)$ & $1702877026944$ \\
+$(-196,14)$ & $1075200$ & $(-64,0)$ & $-5266940863488$ \\
+$(-192,16)$ & $1469664$ & $(-64,8)$ & $577459667808$ \\
+$(-185,11)$ & $2291328$ & $(-64,16)$ & $3856357571400$ \\
+$(-169,13)$ & $8002800$ & $(-57,11)$ & $6616913348736$ \\
+$(-164,10)$ & $12884640$ & $(-49,7)$ & $13306634464800$ \\
+$(-161,15)$ & $13478400$ & $(-41,13)$ & $19829783203200$ \\
+$(-145,9)$ & $65235456$ & $(-36,6)$ & $389561923584$ \\
+$(-144,12)$ & $50761728$ & $(-36,10)$ & $13277462957856$ \\
+$(-132,14)$ & $99727200$ & $(-33,15)$ & $19839548764800$ \\
+$(-128,8)$ & $301785750$ & $(-25,5)$ & $27708909940080$ \\
+$(-128,16)$ & $122880000$ & $(-17,9)$ & $33322846608000$ \\
+$(-121,11)$ & $283462080$ & $(-16,4)$ & $8463731143680$ \\
+$(-113,7)$ & $1288656000$ & $(-16,12)$ & $4551567686400$ \\
+$(-105,13)$ & $628176384$ & $(-9,3)$ & $37891069648920$ \\
+$(-100,6)$ & $5113994640$ & $(-4,2)$ & $29191726062720$ \\
+$(-100,10)$ & $1423319040$ & $(-4,14)$ & $26618808680400$ \\
+$(-97,15)$ & $902880000$ & $(-1,1)$ & $98600177562696$ \\
+$(-89,5)$ & $18935832960$ & & \\
+\end{tabular}}\par\medskip
+\noindent$m=17$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-357,17)$ & $19$ & $(-93,5)$ & $76400456388$ \\
+$(-324,16)$ & $432$ & $(-89,15)$ & $6204211200$ \\
+$(-293,15)$ & $5508$ & $(-85,17)$ & $7237147500$ \\
+$(-289,17)$ & $9792$ & $(-84,4)$ & $253147456960$ \\
+$(-264,14)$ & $51200$ & $(-81,9)$ & $30927744216$ \\
+$(-256,16)$ & $124416$ & $(-77,3)$ & $784630397034$ \\
+$(-237,13)$ & $384750$ & $(-76,12)$ & $19214807040$ \\
+$(-225,15)$ & $1152000$ & $(-72,2)$ & $2256302479736$ \\
+$(-221,17)$ & $1574640$ & $(-69,1)$ & $5924949883415$ \\
+$(-212,12)$ & $2467584$ & $(-68,0)$ & $-18649353355308$ \\
+$(-196,14)$ & $8618400$ & $(-64,8)$ & $10948398535908$ \\
+$(-189,11)$ & $13958360$ & $(-60,14)$ & $21685684256200$ \\
+$(-188,16)$ & $14515200$ & $(-53,11)$ & $43390651159368$ \\
+$(-169,13)$ & $54991872$ & $(-52,16)$ & $32522197488300$ \\
+$(-168,10)$ & $71165952$ & $(-49,7)$ & $22105788825240$ \\
+$(-157,15)$ & $108037800$ & $(-36,6)$ & $66525792046920$ \\
+$(-153,17)$ & $133120000$ & $(-33,13)$ & $43473448733200$ \\
+$(-149,9)$ & $331964325$ & $(-32,10)$ & $54499446598356$ \\
+$(-144,12)$ & $309231360$ & $(-25,5)$ & $26717724373200$ \\
+$(-132,8)$ & $1431840000$ & $(-21,15)$ & $108504494419955$ \\
+$(-128,14)$ & $685283328$ & $(-17,17)$ & $43582246216080$ \\
+$(-121,11)$ & $1565650944$ & $(-16,4)$ & $58424969095824$ \\
+$(-120,16)$ & $984960000$ & $(-13,9)$ & $88055159831172$ \\
+$(-117,7)$ & $5753243711$ & $(-9,3)$ & $106294598576208$ \\
+$(-104,6)$ & $21640922280$ & $(-8,12)$ & $87377876532648$ \\
+$(-101,13)$ & $3826738080$ & $(-4,2)$ & $177792067095372$ \\
+$(-100,10)$ & $7242858000$ & $(-1,1)$ & $245644283204496$ \\
+\end{tabular}}\par\medskip
+\noindent$m=19$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-437,19)$ & $21$ & $(-121,11)$ & $37800576000$ \\
+$(-400,18)$ & $480$ & $(-120,14)$ & $23057768448$ \\
+$(-365,17)$ & $6156$ & $(-112,6)$ & $337518746100$ \\
+$(-361,19)$ & $10944$ & $(-104,16)$ & $41230848000$ \\
+$(-332,16)$ & $57600$ & $(-101,5)$ & $1098196469280$ \\
+$(-324,18)$ & $139968$ & $(-100,10)$ & $153419832240$ \\
+$(-301,15)$ & $436050$ & $(-96,18)$ & $54251596800$ \\
+$(-289,17)$ & $1305600$ & $(-93,13)$ & $107556441300$ \\
+$(-285,19)$ & $1784592$ & $(-92,4)$ & $3378941866104$ \\
+$(-272,14)$ & $2820096$ & $(-85,3)$ & $9788426044191$ \\
+$(-256,16)$ & $9849600$ & $(-81,9)$ & $584304884064$ \\
+$(-248,18)$ & $16588800$ & $(-80,2)$ & $26463967407252$ \\
+$(-245,13)$ & $16105800$ & $(-77,1)$ & $65738606045634$ \\
+$(-225,15)$ & $63452160$ & $(-76,0)$ & $-213880362634530$ \\
+$(-220,12)$ & $83026944$ & $(-73,15)$ & $72244992982950$ \\
+$(-213,17)$ & $124659000$ & $(-68,12)$ & $216572634733842$ \\
+$(-209,19)$ & $153600000$ & $(-64,8)$ & $290240512063128$ \\
+$(-197,11)$ & $392321475$ & $(-61,17)$ & $432520387240500$ \\
+$(-196,14)$ & $360769920$ & $(-57,19)$ & $216450446524146$ \\
+$(-180,16)$ & $799497216$ & $(-49,7)$ & $295233026761560$ \\
+$(-176,10)$ & $1718208000$ & $(-45,11)$ & $650190207407382$ \\
+$(-172,18)$ & $1149120000$ & $(-44,14)$ & $649291870132950$ \\
+$(-169,13)$ & $1850314752$ & $(-36,6)$ & $454813054337556$ \\
+$(-157,9)$ & $7031742300$ & $(-28,16)$ & $721883567564100$ \\
+$(-149,15)$ & $4522508640$ & $(-25,5)$ & $499868176959420$ \\
+$(-144,12)$ & $8691429600$ & $(-24,10)$ & $439229144775060$ \\
+$(-140,8)$ & $27051148812$ & $(-20,18)$ & $866327370562008$ \\
+$(-137,17)$ & $7332249600$ & $(-17,13)$ & $652449860097750$ \\
+$(-133,19)$ & $8552992500$ & $(-16,4)$ & $1053337413298920$ \\
+$(-125,7)$ & $98228864970$ & $(-9,3)$ & $702773949743370$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-5,9)$ & $1537516442814717$ & $(-1,1)$ & $2909367756476946$ \\
+$(-4,2)$ & $1789602194930022$ & & \\
+\end{tabular}}\par\medskip
+\noindent$m=23$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-621,23)$ & $25$ & $(-225,15)$ & $51546240000$ \\
+$(-576,22)$ & $576$ & $(-216,20)$ & $54974464000$ \\
+$(-533,21)$ & $7452$ & $(-213,11)$ & $141886133142$ \\
+$(-529,23)$ & $13248$ & $(-208,22)$ & $72335462400$ \\
+$(-492,20)$ & $70400$ & $(-197,17)$ & $146667874500$ \\
+$(-484,22)$ & $171072$ & $(-196,14)$ & $214787764800$ \\
+$(-453,19)$ & $538650$ & $(-192,10)$ & $506277734414$ \\
+$(-441,21)$ & $1612800$ & $(-177,19)$ & $284663808000$ \\
+$(-437,23)$ & $2204496$ & $(-173,9)$ & $1725722127612$ \\
+$(-416,18)$ & $3525120$ & $(-169,13)$ & $843995842560$ \\
+$(-400,20)$ & $12312000$ & $(-165,21)$ & $413113770000$ \\
+$(-392,22)$ & $20736000$ & $(-164,16)$ & $649482624000$ \\
+$(-381,17)$ & $20400680$ & $(-161,23)$ & $465992663040$ \\
+$(-361,19)$ & $80372736$ & $(-156,8)$ & $5631167703640$ \\
+$(-349,21)$ & $157901400$ & $(-144,12)$ & $3143323565280$ \\
+$(-348,16)$ & $106748928$ & $(-141,7)$ & $17611124144035$ \\
+$(-345,23)$ & $194560000$ & $(-140,18)$ & $1352000160000$ \\
+$(-324,18)$ & $463847040$ & $(-133,15)$ & $2692518051600$ \\
+$(-317,15)$ & $513035775$ & $(-128,6)$ & $52797261964950$ \\
+$(-308,20)$ & $1027924992$ & $(-124,20)$ & $2129641113600$ \\
+$(-300,22)$ & $1477440000$ & $(-121,11)$ & $11138110242336$ \\
+$(-289,17)$ & $2419642368$ & $(-117,5)$ & $151565029757111$ \\
+$(-288,14)$ & $2290944000$ & $(-116,22)$ & $2649494292480$ \\
+$(-269,19)$ & $5914049760$ & $(-108,4)$ & $415459643733872$ \\
+$(-261,13)$ & $9588739500$ & $(-105,17)$ & $5956454400000$ \\
+$(-257,21)$ & $9588326400$ & $(-104,14)$ & $10517486656680$ \\
+$(-256,16)$ & $11588572800$ & $(-101,3)$ & $1081641789325530$ \\
+$(-253,23)$ & $11184682500$ & $(-100,10)$ & $37652125212000$ \\
+$(-236,12)$ & $37871608320$ & $(-96,2)$ & $2650308467184860$ \\
+$(-232,18)$ & $30743691264$ & $(-93,1)$ & $6022732288717356$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-92,0)$ & $-20800342108291896$ & $(-36,6)$ & $69560999106618720$ \\
+$(-85,19)$ & $16620472160605650$ & $(-32,20)$ & $66505466318775030$ \\
+$(-81,9)$ & $16732042562445564$ & $(-29,11)$ & $83509521255588480$ \\
+$(-77,13)$ & $33259716859605360$ & $(-25,5)$ & $24936698942625900$ \\
+$(-73,21)$ & $16623997826310588$ & $(-24,22)$ & $66518048767229280$ \\
+$(-72,16)$ & $33245365402689400$ & $(-16,4)$ & $87376975980941520$ \\
+$(-69,23)$ & $49846214714614900$ & $(-13,17)$ & $83232409805408472$ \\
+$(-64,8)$ & $33596527753603512$ & $(-12,14)$ & $100011713355005804$ \\
+$(-52,12)$ & $33357513284316600$ & $(-9,3)$ & $98925661825643628$ \\
+$(-49,7)$ & $17719252672955100$ & $(-8,10)$ & $67901293719386976$ \\
+$(-48,18)$ & $66485708494441500$ & $(-4,2)$ & $139365700955059560$ \\
+$(-41,15)$ & $33316038280577400$ & $(-1,1)$ & $242591082794658480$ \\
+\end{tabular}}\par\medskip
+\noindent$m=25$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-725,25)$ & $27$ & $(-289,17)$ & $58419072000$ \\
+$(-676,24)$ & $624$ & $(-284,22)$ & $61846272000$ \\
+$(-629,23)$ & $8100$ & $(-276,24)$ & $81377395200$ \\
+$(-625,25)$ & $14400$ & $(-269,13)$ & $163714769010$ \\
+$(-584,22)$ & $76800$ & $(-261,19)$ & $166223591100$ \\
+$(-576,24)$ & $186624$ & $(-256,16)$ & $245471731200$ \\
+$(-541,21)$ & $589950$ & $(-244,12)$ & $590657356800$ \\
+$(-529,23)$ & $1766400$ & $(-241,21)$ & $322618982400$ \\
+$(-525,25)$ & $2414448$ & $(-229,23)$ & $468195606000$ \\
+$(-500,20)$ & $3877632$ & $(-225,15)$ & $973841356800$ \\
+$(-484,22)$ & $13543200$ & $(-225,25)$ & $528125018112$ \\
+$(-476,24)$ & $22809600$ & $(-224,18)$ & $742265856000$ \\
+$(-461,19)$ & $22548120$ & $(-221,11)$ & $2039489782215$ \\
+$(-441,21)$ & $88833024$ & $(-200,10)$ & $6757400879544$ \\
+$(-429,23)$ & $174522600$ & $(-200,20)$ & $1545143040000$ \\
+$(-425,25)$ & $215040000$ & $(-196,14)$ & $3667210825824$ \\
+$(-424,18)$ & $118609920$ & $(-189,17)$ & $3106751598000$ \\
+$(-400,20)$ & $515385600$ & $(-184,22)$ & $2433875558400$ \\
+$(-389,17)$ & $573392925$ & $(-181,9)$ & $21524693185035$ \\
+$(-384,22)$ & $1142138880$ & $(-176,24)$ & $3027993477120$ \\
+$(-376,24)$ & $1641600000$ & $(-169,13)$ & $13163221094712$ \\
+$(-361,19)$ & $2704306176$ & $(-164,8)$ & $65996213108640$ \\
+$(-356,16)$ & $2577312000$ & $(-161,19)$ & $6872832000000$ \\
+$(-341,21)$ & $6609820320$ & $(-156,16)$ & $12270401095680$ \\
+$(-329,23)$ & $10716364800$ & $(-149,7)$ & $194862258910125$ \\
+$(-325,15)$ & $10867238100$ & $(-144,12)$ & $45182542960512$ \\
+$(-325,25)$ & $12500527500$ & $(-141,21)$ & $11611206731250$ \\
+$(-324,18)$ & $13037144400$ & $(-136,6)$ & $553836164704200$ \\
+$(-300,20)$ & $34586652672$ & $(-129,23)$ & $15679282544640$ \\
+$(-296,14)$ & $43281838080$ & $(-125,5)$ & $1512859258863720$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-125,15)$ & $45971107141572$ & $(-64,8)$ & $330062565925438758$ \\
+$(-125,25)$ & $17293119576000$ & $(-61,19)$ & $521661779676065430$ \\
+$(-124,18)$ & $28638368640000$ & $(-56,16)$ & $521867731813760880$ \\
+$(-121,11)$ & $148662826021776$ & $(-49,7)$ & $272356569849859560$ \\
+$(-116,4)$ & $3959104942633920$ & $(-44,12)$ & $523273123016135280$ \\
+$(-109,3)$ & $9871029907055100$ & $(-41,21)$ & $391414548006833940$ \\
+$(-104,2)$ & $23235254202421080$ & $(-36,6)$ & $487409795338655826$ \\
+$(-101,1)$ & $50912869133641230$ & $(-29,23)$ & $912956331911761320$ \\
+$(-100,0)$ & $-180673890965605794$ & $(-25,5)$ & $166300240644599760$ \\
+$(-100,10)$ & $43923681752975940$ & $(-25,15)$ & $88393185594933480$ \\
+$(-100,20)$ & $43505469207466740$ & $(-25,25)$ & $87365323849071072$ \\
+$(-96,14)$ & $65345111736595470$ & $(-24,18)$ & $522281256406728480$ \\
+$(-89,17)$ & $130474688278237020$ & $(-21,11)$ & $657516846337463340$ \\
+$(-84,22)$ & $195617701417613130$ & $(-16,4)$ & $712803047925978480$ \\
+$(-81,9)$ & $131787679942610820$ & $(-9,3)$ & $692666646950331360$ \\
+$(-76,24)$ & $260813458688712120$ & $(-4,2)$ & $1685617453229768280$ \\
+$(-69,13)$ & $391645600540377660$ & $(-1,1)$ & $2125330279004749164$ \\
+\end{tabular}}\par\medskip
+\noindent$m=27$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-837,27)$ & $29$ & $(-361,19)$ & $65291904000$ \\
+$(-784,26)$ & $672$ & $(-360,24)$ & $68718080000$ \\
+$(-733,25)$ & $8748$ & $(-352,26)$ & $90419328000$ \\
+$(-729,27)$ & $15552$ & $(-333,15)$ & $185543404878$ \\
+$(-684,24)$ & $83200$ & $(-333,21)$ & $185779307700$ \\
+$(-676,26)$ & $202176$ & $(-324,18)$ & $276155697600$ \\
+$(-637,23)$ & $641250$ & $(-313,23)$ & $360574156800$ \\
+$(-625,25)$ & $1920000$ & $(-304,14)$ & $675036979200$ \\
+$(-621,27)$ & $2624400$ & $(-301,25)$ & $523277442000$ \\
+$(-592,22)$ & $4230144$ & $(-297,27)$ & $590257373184$ \\
+$(-576,24)$ & $14774400$ & $(-292,20)$ & $835049088000$ \\
+$(-568,26)$ & $24883200$ & $(-289,17)$ & $1103686871040$ \\
+$(-549,21)$ & $24695560$ & $(-277,13)$ & $2353257441000$ \\
+$(-529,23)$ & $97293312$ & $(-268,22)$ & $1738285920000$ \\
+$(-517,25)$ & $191143800$ & $(-256,16)$ & $4191098086656$ \\
+$(-513,27)$ & $235520000$ & $(-253,19)$ & $3520985144400$ \\
+$(-508,20)$ & $130470912$ & $(-252,12)$ & $7883634354192$ \\
+$(-484,22)$ & $566924160$ & $(-252,24)$ & $2738110003200$ \\
+$(-469,19)$ & $633750075$ & $(-244,26)$ & $3406492661760$ \\
+$(-468,24)$ & $1256352768$ & $(-229,11)$ & $25438273374915$ \\
+$(-460,26)$ & $1805760000$ & $(-225,15)$ & $15188332032000$ \\
+$(-441,21)$ & $2988969984$ & $(-225,21)$ & $7789209600000$ \\
+$(-432,18)$ & $2863680000$ & $(-216,18)$ & $14023315537920$ \\
+$(-421,23)$ & $7305590880$ & $(-208,10)$ & $79195440627900$ \\
+$(-409,25)$ & $11844403200$ & $(-205,23)$ & $13159367628750$ \\
+$(-405,27)$ & $13816372500$ & $(-196,14)$ & $52712966678736$ \\
+$(-400,20)$ & $14485716000$ & $(-193,25)$ & $17769853550592$ \\
+$(-397,17)$ & $12145736700$ & $(-189,9)$ & $238164591336560$ \\
+$(-376,22)$ & $38429614080$ & $(-189,27)$ & $19598868852800$ \\
+$(-364,16)$ & $48692067840$ & $(-184,20)$ & $32729564160000$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-181,17)$ & $53043585159240$ & $(-85,25)$ & $2879850963627175500$ \\
+$(-172,8)$ & $692287577406900$ & $(-81,9)$ & $334882976764660884$ \\
+$(-169,13)$ & $175692422851296$ & $(-81,27)$ & $320456996579194740$ \\
+$(-160,22)$ & $58762713600000$ & $(-76,20)$ & $2880336320287553700$ \\
+$(-157,7)$ & $1944985498883550$ & $(-73,17)$ & $1921331705177878200$ \\
+$(-148,16)$ & $191372983607088$ & $(-64,8)$ & $3880648187564902128$ \\
+$(-145,19)$ & $129845514240000$ & $(-61,13)$ & $4805915526171448560$ \\
+$(-144,6)$ & $5277242303494508$ & $(-52,22)$ & $3840730619391002736$ \\
+$(-144,12)$ & $563555602046880$ & $(-49,7)$ & $2990211067380215676$ \\
+$(-144,24)$ & $85106478643200$ & $(-40,16)$ & $3845177557750854000$ \\
+$(-136,26)$ & $101883074641920$ & $(-37,19)$ & $6722157510952461000$ \\
+$(-133,5)$ & $13801676899833342$ & $(-36,6)$ & $284173034437561104$ \\
+$(-124,4)$ & $34673641296681240$ & $(-36,12)$ & $21382847095489056$ \\
+$(-121,11)$ & $1742299969375680$ & $(-36,24)$ & $2881517266880955524$ \\
+$(-117,3)$ & $83203610603616611$ & $(-28,26)$ & $5761235461936369392$ \\
+$(-117,15)$ & $660794690587536$ & $(-25,5)$ & $3575127877265089500$ \\
+$(-117,21)$ & $245951168175000$ & $(-16,4)$ & $7374264441607837320$ \\
+$(-112,2)$ & $189000944694758304$ & $(-13,11)$ & $7741443150279913572$ \\
+$(-109,1)$ & $400957496404655760$ & $(-9,3)$ & $3525745210824609864$ \\
+$(-108,0)$ & $-1459811691104427980$ & $(-9,15)$ & $2899186646818855772$ \\
+$(-108,18)$ & $640347831117684200$ & $(-9,21)$ & $6198305753318688$ \\
+$(-100,10)$ & $964984629806059500$ & $(-4,2)$ & $12919557811264058520$ \\
+$(-97,23)$ & $960166860097873500$ & $(-1,1)$ & $16296347537851678860$ \\
+$(-88,14)$ & $1921766006989235592$ & & \\
+\end{tabular}}\par\medskip
+\noindent$m=29$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-957,29)$ & $31$ & $(-441,21)$ & $72164736000$ \\
+$(-900,28)$ & $720$ & $(-440,18)$ & $54102297600$ \\
+$(-845,27)$ & $9396$ & $(-436,28)$ & $99461260800$ \\
+$(-841,29)$ & $16704$ & $(-413,23)$ & $205335024300$ \\
+$(-792,26)$ & $89600$ & $(-405,17)$ & $207372040746$ \\
+$(-784,28)$ & $217728$ & $(-400,20)$ & $306839664000$ \\
+$(-741,25)$ & $692550$ & $(-393,25)$ & $398529331200$ \\
+$(-729,27)$ & $2073600$ & $(-381,27)$ & $578359278000$ \\
+$(-725,29)$ & $2834352$ & $(-377,29)$ & $652389728256$ \\
+$(-692,24)$ & $4582656$ & $(-372,16)$ & $759416601600$ \\
+$(-676,26)$ & $16005600$ & $(-368,22)$ & $927832320000$ \\
+$(-668,28)$ & $26956800$ & $(-361,19)$ & $1233532385280$ \\
+$(-645,23)$ & $26843000$ & $(-344,24)$ & $1931428800000$ \\
+$(-625,25)$ & $105753600$ & $(-341,15)$ & $2667025099800$ \\
+$(-613,27)$ & $207765000$ & $(-328,26)$ & $3042344448000$ \\
+$(-609,29)$ & $256000000$ & $(-325,21)$ & $3935218690800$ \\
+$(-600,22)$ & $142331904$ & $(-324,18)$ & $4714985347488$ \\
+$(-576,24)$ & $618462720$ & $(-320,28)$ & $3784991846400$ \\
+$(-560,26)$ & $1370566656$ & $(-312,14)$ & $9009867833344$ \\
+$(-557,21)$ & $694107225$ & $(-297,23)$ & $8705587200000$ \\
+$(-552,28)$ & $1969920000$ & $(-289,17)$ & $17213442969600$ \\
+$(-529,23)$ & $3273633792$ & $(-285,13)$ & $29351853888542$ \\
+$(-516,20)$ & $3150048000$ & $(-284,20)$ & $15776229980160$ \\
+$(-509,25)$ & $8001361440$ & $(-277,25)$ & $14707528526250$ \\
+$(-497,27)$ & $12972441600$ & $(-265,27)$ & $19860424556544$ \\
+$(-493,29)$ & $15132217500$ & $(-261,29)$ & $21904618129600$ \\
+$(-484,22)$ & $15934287600$ & $(-260,12)$ & $92394680318784$ \\
+$(-477,19)$ & $13424235300$ & $(-256,16)$ & $60243390489600$ \\
+$(-460,24)$ & $42272575488$ & $(-252,22)$ & $36820759680000$ \\
+$(-444,26)$ & $75589888000$ & $(-245,19)$ & $60116063180472$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-237,11)$ & $281467228195350$ & $(-116,0)$ & $-11051190853815444140$ \\
+$(-228,24)$ & $66108052800000$ & $(-112,24)$ & $3336101536159741228$ \\
+$(-225,15)$ & $202722026250600$ & $(-109,15)$ & $6676839584194931276$ \\
+$(-216,10)$ & $830744673348880$ & $(-100,10)$ & $10054762621174357524$ \\
+$(-212,26)$ & $95744788473600$ & $(-96,26)$ & $13339654999454913712$ \\
+$(-209,21)$ & $147158249472000$ & $(-93,21)$ & $20009992034420187918$ \\
+$(-208,18)$ & $218711981260800$ & $(-92,18)$ & $13344223562630721712$ \\
+$(-204,28)$ & $114618458972160$ & $(-88,28)$ & $13340058749756404912$ \\
+$(-197,9)$ & $2377196296605225$ & $(-81,9)$ & $13479680119885100416$ \\
+$(-196,14)$ & $657481527211824$ & $(-80,14)$ & $16697153284954986140$ \\
+$(-181,23)$ & $278744657265000$ & $(-65,23)$ & $13344347057988806704$ \\
+$(-180,8)$ & $6596424121385200$ & $(-64,8)$ & $13715746841744150704$ \\
+$(-173,17)$ & $762455410888212$ & $(-57,17)$ & $20029218407700264968$ \\
+$(-169,13)$ & $2059081454991600$ & $(-53,13)$ & $33420153328729348048$ \\
+$(-168,20)$ & $558813078220800$ & $(-52,20)$ & $23355241903629063796$ \\
+$(-165,7)$ & $17743317844037191$ & $(-49,7)$ & $7639349981978601968$ \\
+$(-161,25)$ & $429029664768000$ & $(-45,25)$ & $46690478706102626599$ \\
+$(-152,6)$ & $46212218058735600$ & $(-36,6)$ & $42406603776364385856$ \\
+$(-149,27)$ & $550856772333000$ & $(-33,27)$ & $20018530032701618056$ \\
+$(-145,29)$ & $597903307702272$ & $(-29,29)$ & $40025246697058561866$ \\
+$(-144,12)$ & $6235581971496960$ & $(-28,12)$ & $13561497881749176112$ \\
+$(-141,5)$ & $116290474927547335$ & $(-25,5)$ & $18994314509969141752$ \\
+$(-140,16)$ & $2554297532012736$ & $(-24,16)$ & $40086726274631569936$ \\
+$(-136,22)$ & $1110179146752000$ & $(-20,22)$ & $40038517497837195552$ \\
+$(-132,4)$ & $281729144330446656$ & $(-16,4)$ & $29377615312681440860$ \\
+$(-129,19)$ & $2025110937635200$ & $(-13,19)$ & $33395300835176998402$ \\
+$(-125,3)$ & $653323636754864820$ & $(-9,3)$ & $46912977880829109024$ \\
+$(-121,11)$ & $18276390450113400$ & $(-5,11)$ & $53978978447019515815$ \\
+$(-120,2)$ & $1437507816773977904$ & $(-4,2)$ & $79905056934865692944$ \\
+$(-117,1)$ & $2962568524137557111$ & $(-1,1)$ & $110927841636542454472$ \\
+\end{tabular}}\par\medskip
+\noindent$m=31$:\nopagebreak\\[2pt]
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-1085,31)$ & $33$ & $(-529,23)$ & $79037568000$ \\
+$(-1024,30)$ & $768$ & $(-528,30)$ & $108503193600$ \\
+$(-965,29)$ & $10044$ & $(-524,20)$ & $59512527360$ \\
+$(-961,31)$ & $17856$ & $(-501,25)$ & $224890740900$ \\
+$(-908,28)$ & $96000$ & $(-485,19)$ & $229200676614$ \\
+$(-900,30)$ & $233280$ & $(-484,22)$ & $337523630400$ \\
+$(-853,27)$ & $743850$ & $(-481,27)$ & $436484505600$ \\
+$(-841,29)$ & $2227200$ & $(-469,29)$ & $633441114000$ \\
+$(-837,31)$ & $3044304$ & $(-465,31)$ & $714522083328$ \\
+$(-800,26)$ & $4935168$ & $(-452,24)$ & $1020615552000$ \\
+$(-784,28)$ & $17236800$ & $(-448,18)$ & $843796224000$ \\
+$(-776,30)$ & $29030400$ & $(-441,21)$ & $1363377899520$ \\
+$(-749,25)$ & $28990440$ & $(-428,26)$ & $2124571680000$ \\
+$(-729,27)$ & $114213888$ & $(-413,17)$ & $2980792758600$ \\
+$(-717,29)$ & $224386200$ & $(-412,28)$ & $3346578892800$ \\
+$(-713,31)$ & $276480000$ & $(-405,23)$ & $4349452237200$ \\
+$(-700,24)$ & $154192896$ & $(-404,30)$ & $4163491031040$ \\
+$(-676,26)$ & $670001280$ & $(-400,20)$ & $5238872608320$ \\
+$(-660,28)$ & $1484780544$ & $(-380,16)$ & $10136101312512$ \\
+$(-653,23)$ & $754464375$ & $(-377,25)$ & $9621964800000$ \\
+$(-652,30)$ & $2134080000$ & $(-361,19)$ & $19238553907200$ \\
+$(-625,25)$ & $3558297600$ & $(-360,22)$ & $17529144422400$ \\
+$(-608,22)$ & $3436416000$ & $(-357,27)$ & $16255689423750$ \\
+$(-605,27)$ & $8697132000$ & $(-349,15)$ & $33265434406995$ \\
+$(-593,29)$ & $14100480000$ & $(-345,29)$ & $21950995562496$ \\
+$(-589,31)$ & $16448062500$ & $(-341,31)$ & $24210367406400$ \\
+$(-576,24)$ & $17382859200$ & $(-328,24)$ & $40911955200000$ \\
+$(-565,21)$ & $14702733900$ & $(-324,18)$ & $67773814300800$ \\
+$(-552,26)$ & $46115536896$ & $(-320,14)$ & $105593920358418$ \\
+$(-536,28)$ & $82461696000$ & $(-317,21)$ & $67188541201704$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-304,26)$ & $73453392000000$ & $(-157,23)$ & $4759188335120700$ \\
+$(-293,13)$ & $324769878248508$ & $(-156,30)$ & $3221530529817600$ \\
+$(-289,17)$ & $229751629750272$ & $(-152,20)$ & $8032452065318400$ \\
+$(-288,28)$ & $106383098304000$ & $(-149,5)$ & $912729950753311665$ \\
+$(-281,23)$ & $164470984704000$ & $(-144,12)$ & $62239319639949600$ \\
+$(-280,30)$ & $127353843302400$ & $(-140,4)$ & $2140240666757164956$ \\
+$(-276,20)$ & $246050978918400$ & $(-133,3)$ & $4812743199456400842$ \\
+$(-268,12)$ & $969202101780000$ & $(-132,16)$ & $29935876521333600$ \\
+$(-256,16)$ & $751407459546624$ & $(-129,25)$ & $8105476380917760$ \\
+$(-253,25)$ & $311538146355000$ & $(-128,2)$ & $10289506008098922750$ \\
+$(-245,11)$ & $2809413357532050$ & $(-125,1)$ & $20659116387349715388$ \\
+$(-237,19)$ & $864116132335200$ & $(-124,0)$ & $-78861761785162802736$ \\
+$(-236,22)$ & $628664712998400$ & $(-121,11)$ & $14823010733996657847$ \\
+$(-233,27)$ & $479503742976000$ & $(-113,19)$ & $43973625116344791621$ \\
+$(-225,15)$ & $2375863208180640$ & $(-112,22)$ & $58612775382294542928$ \\
+$(-224,10)$ & $7915700162972370$ & $(-109,27)$ & $87904859396559441642$ \\
+$(-221,29)$ & $615663451431000$ & $(-101,15)$ & $131930981924137436943$ \\
+$(-217,31)$ & $668244873314304$ & $(-100,10)$ & $88366345586077489002$ \\
+$(-205,9)$ & $21686138938234116$ & $(-97,29)$ & $58609896270145294428$ \\
+$(-204,24)$ & $1248951540096000$ & $(-93,31)$ & $131855269227113585088$ \\
+$(-200,18)$ & $2919197178007992$ & $(-81,9)$ & $45194316928729462917$ \\
+$(-196,14)$ & $7274845281261600$ & $(-80,24)$ & $175817161475683230996$ \\
+$(-193,21)$ & $2295125729280000$ & $(-76,18)$ & $146576315913879044070$ \\
+$(-188,8)$ & $57763442497319208$ & $(-72,14)$ & $88162352392739935842$ \\
+$(-180,26)$ & $2028087443174400$ & $(-69,21)$ & $175846743104769864684$ \\
+$(-173,7)$ & $149495407755074712$ & $(-64,8)$ & $178975956310893683796$ \\
+$(-169,13)$ & $21599361451237440$ & $(-56,26)$ & $175832854626523119204$ \\
+$(-165,17)$ & $9510000661246788$ & $(-49,7)$ & $110429260178023649457$ \\
+$(-164,28)$ & $2767311440640000$ & $(-45,13)$ & $220503190901206402737$ \\
+$(-160,6)$ & $375427477633876830$ & $(-41,17)$ & $132114330762355040463$ \\
+\end{tabular}}\par
+{\scriptsize\begin{tabular}{@{}r@{\ \ }r@{\qquad}r@{\ \ }r@{}}
+$(-40,28)$ & $175847039098023588012$ & $(-16,4)$ & $328137054582737278032$ \\
+$(-36,6)$ & $106696483668642996378$ & $(-9,3)$ & $281127442168230931602$ \\
+$(-33,23)$ & $88004734136509466250$ & $(-8,16)$ & $264510984737877876774$ \\
+$(-32,30)$ & $263748710502385991106$ & $(-5,25)$ & $439641738951854707065$ \\
+$(-28,20)$ & $263881788303448123326$ & $(-4,2)$ & $549109732661590253892$ \\
+$(-25,5)$ & $174847391172968724543$ & $(-1,1)$ & $758994172176515233506$ \\
+$(-20,12)$ & $265816840297182383214$ & & \\
+\end{tabular}}\par\medskip
 
 \section{The computations}\label{app:computation}
 
@@ -1014,13 +1488,13 @@ All coefficients were computed in exact integer or rational arithmetic with the 
 
 \emph{The functions $\chi_N$.} Applying $p\,\frac{d}{dp}$ to \eqref{eq:dmvv} gives $N\chi_N=\sum_{k=1}^N kL_k\,\chi_{N-k}$ with $L_k=(2\phi_{0,1})|V_k$, and by \eqref{eq:heckecoef} the coefficient of $q^n\zeta^l$ in $kL_k$ is $\sum_{r\mid(k,n,l)}(k/r)\,C\bigl((4nk-l^2)/r^2\bigr)$. All series are truncated at $q^K$ and stored as polynomials in $\zeta$ and $\zeta^{-1}$.
 
-\emph{The functions $\psi^F_m$.} The product $\Delta\psi_m=\chi_{m+1}\cdot A^{-1}$ was computed with the expansion of $1/A$ in the strip $|q|<|\zeta|<1$ from Section~\ref{sec:jacobi}, the expansion of $A_{1,m}$ in the same strip was subtracted with the factor $\pf(m+1)$, and the result was divided by $\Delta$ by multiplying with $\sum_k\pf(k)q^{k-1}$. This gives $\cF_m(n,l)$ for $0\le l\le m$ and $-1\le n<K$. We did this for $1\le m\le19$ with $K=\lfloor(1000+m^2)/4m\rfloor+2$, which covers every reduced form of discriminant at most $1000$. By Lemma~\ref{lem:poles} these coefficients determine all others.
+\emph{The functions $\psi^F_m$.} In the strip $|q|<|\zeta|<1$ one has $1/A=\zeta S^2$ with $S=\sum_{n\in\ZZ}(-1)^nq^{n(n+1)/2}/(1-q^n\zeta)$; this is the square of the partial fraction expansion of $\eta^3/\vt_1$, and its coefficients of $q^n\zeta^l$ with $n\le40$ and $|l|\le40$ agree with those of the product for $1/A$ of Section~\ref{sec:jacobi}. The product $\Delta\psi_m=\chi_{m+1}\cdot\zeta S^2$ was computed, the expansion of $A_{1,m}$ in the same strip was subtracted with the factor $\pf(m+1)$, and the result was divided by $\Delta$ by multiplying with $\sum_k\pf(k)q^{k-1}$. This gives $\cF_m(n,l)$ for $0\le l\le m$ and $-1\le n<K$. Products of series in $q$ and $\zeta$ truncated at $q^K$ and $|\zeta\text{-degree}|\le L$ were computed by Kronecker substitution, which packs the rows into one integer polynomial with stride $4L+1$ and multiplies once. We did this for $4\le m\le49$ with $K=\lfloor(7200+m^2)/4m\rfloor+2$, which covers every reduced form of discriminant at most $7200$. For $m=1,2,3$ we used Theorem~\ref{thm:D} instead, $\cF_m=(\phi_m-\lambda_m\mathcal G_m)/\Delta$ with $\phi_m$ from Appendix~\ref{app:data}, and compared the result with the definition for $n<119$, $79$ and $59$ respectively; the tables agree. By Lemma~\ref{lem:poles} these coefficients determine all others.
 
-\emph{Theorem~\ref{thm:D}.} The coefficients of $q^n\zeta^l$, $0\le n\le14$, $0\le l\le m$, of $\Delta\psi^F_m$, of the monomials $E_4^\alpha E_6^\beta A^iB^{m-i}$ and of $\Hc|V_m$ give an overdetermined linear system over $\QQ$, solved exactly. Its matrix has full column rank for every $m\in\Mset$, and the solution is the one in Appendix~\ref{app:data}.
+\emph{Theorem~\ref{thm:D}.} The coefficients of $q^n\zeta^l$, $0\le n\le14$, $0\le l\le m$, of $\Delta\psi^F_m$ (computed from the definition), of the monomials $E_4^\alpha E_6^\beta A^iB^{m-i}$ and of $\mathcal G_m$ give an overdetermined linear system over $\QQ$, solved exactly. Its matrix has full column rank for $m\in\{1,2,3,4,5,7,8,9,11,13\}$, the solution has $\lambda=\lambda_m$, and for $m\in\{1,2,3,5,7,11,13\}$ it is the one in Appendix~\ref{app:data}.
 
 \emph{Reduced forms and Theorem~\ref{thm:A}.} Reduced forms were computed by the algorithm recalled after Lemma~\ref{lem:reduced}, and each output was checked to satisfy $0\le b\le c\le a$ and $4ac-b^2=D$.
 
-\emph{The exact formula.} As a test of Theorem~\ref{thm:rademacher}, the terms with $c=1$ of \eqref{eq:rademacher} were evaluated with $50$-digit arithmetic at the largest $n$ available for each $m$ and compared with the exact coefficients $a_m(n,l)=\cF_m(n,l)+\lambda_m\delta_m(n,l)$. The relative differences are below $2\cdot10^{-25}$ for $m=13$ and smaller for smaller $m$ (for instance $2.5\cdot10^{-49}$ for $m=1$), consistent with the size of the terms with $c=2$.
+\emph{The exact formula.} As a test of Theorem~\ref{thm:rademacher}, the terms with $c=1$ of \eqref{eq:rademacher} were evaluated with $50$-digit arithmetic at the largest $n$ available for each $m$ and compared with the exact coefficients $a_m(n,l)=\cF_m(n,l)+\lambda_m\delta_m(n,l)$. The relative differences are below $10^{-48}$, which is the working precision; the terms with $c\ge2$ are smaller by many more orders of magnitude.
 
 \emph{The tail certificate.} The quantities of Proposition~\ref{prop:certificate} were evaluated in Arb with a working precision of $200$ bits.
 

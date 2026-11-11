@@ -16,14 +16,21 @@ class B:
         c=p.coeffs(); L=s.L
         return fmpz_poly(c[L:3*L+1])
     def mul(s,o):
-        K=s.K; r=[fmpz_poly(0) for _ in range(K+1)]
-        nz_s=[i for i in range(K+1) if s.rows[i]!=0]; nz_o=[j for j in range(K+1) if o.rows[j]!=0]
-        acc=[fmpz_poly(0) for _ in range(K+1)]
-        for i in nz_s:
-            for j in nz_o:
-                if i+j>K: break
-                acc[i+j]+=s.rows[i]*o.rows[j]
-        return B(K,s.L,[s.trunc_row(a) for a in acc])
+        # Kronecker substitution: row i, offset index t in [0,2L] -> x^(i*W+t), W=4L+1
+        K=s.K; L=s.L; W=4*L+1
+        def pack(rows):
+            c=[]
+            for i in range(K+1):
+                r=[int(x) for x in rows[i].coeffs()]
+                r=r+[0]*(W-len(r))
+                c.extend(r)
+            return fmpz_poly(c)
+        P=pack(s.rows)*pack(o.rows)
+        c=P.coeffs(); out=[]
+        for i in range(K+1):
+            seg=c[i*W+L:i*W+3*L+1]
+            out.append(fmpz_poly(seg))
+        return B(K,L,out)
     def add(s,o,f=1):
         return B(s.K,s.L,[a+f*b for a,b in zip(s.rows,o.rows)])
     def scal_div(s,d):
@@ -71,18 +78,28 @@ def compute(m,K,L=None):
             acc=acc.add(kLk[k].mul(Z[N-k]))
         Z.append(acc.scal_div(N))
     chi=Z[Nmax]
-    # Kf = sum_{k>=1} k y^k * prod (1-q^n)^4 (1-q^n y)^-2 (1-q^n/y)^-2
-    Kf=mono_series(K,L,{(0,k):k for k in range(1,L+1)})
-    for n in range(1,K+1):
-        f={}
-        for a in range(0,5): 
-            if n*a<=K: f[(n*a,0)]=comb(4,a)*(-1)**a
-        Kf=Kf.mul(mono_series(K,L,f))
-        for b in (1,-1):
-            g={};k=0
-            while n*k<=K:
-                g[(n*k,b*k)]=k+1; k+=1
-            Kf=Kf.mul(mono_series(K,L,g))
+    # Kf = -eta^6/theta_1^2 = y*S^2,  S = sum_n (-1)^n q^{n(n+1)/2}/(1-q^n y)  (|q|<|y|<1)
+    rows=[[0]*(2*L+1) for _ in range(K+1)]
+    n=0
+    while n*(n+1)//2<=K:
+        e0=n*(n+1)//2; sg=(-1 if n%2 else 1)
+        if n==0:
+            for k in range(0,L+1): rows[0][k+L]+=1
+        else:
+            k=0
+            while e0+n*k<=K:
+                if k<=L: rows[e0+n*k][k+L]+=sg
+                k+=1
+        n+=1
+    n=-1
+    while n*(n+1)//2<=K:
+        e0=n*(n+1)//2; sg=(-1 if n%2 else 1); k=1
+        while e0-n*k<=K:
+            if -k>=-L: rows[e0-n*k][-k+L]-=sg
+            k+=1
+        n-=1
+    Sser=B(K,L,[fmpz_poly(r) for r in rows])
+    Kf=Sser.mul(Sser).mul(mono_series(K,L,{(0,1):1}))
     DP=chi.mul(Kf)   # Delta * psi_m, coefficient (i,l) <-> q^{i} y^l times q^0 ... Delta=q*prod => Delta*psi_m has q^{>=0}
     # p24
     P=[1]+[0]*(K+2)
@@ -90,10 +107,11 @@ def compute(m,K,L=None):
         for _ in range(24):
             for i in range(K+2,n-1,-1): P[i]+=P[i-n]
     # wait: that's prod (1-q^n)^{-1} applied 24 times: P[i]+=P[i-n] ascending order needed for 1/(1-q^n)
-    P=[1]+[0]*(K+2)
-    for n in range(1,K+3):
+    KP=max(K,m)+3
+    P=[1]+[0]*(KP-1)
+    for n in range(1,KP):
         for _ in range(24):
-            for i in range(n,K+3): P[i]+=P[i-n]
+            for i in range(n,KP): P[i]+=P[i-n]
     p24=P
     res={}
     for l in range(0,m+1):

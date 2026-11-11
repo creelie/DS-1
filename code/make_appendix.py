@@ -16,7 +16,7 @@ def mono(a,b,i,j):
         elif e>1: t.append(f"{name}^{{{e}}}")
     return " ".join(t)
 def phi_table(m):
-    c=json.load(open(os.path.join(HERE,'data',f'cF_{m}.json'))); cF={tuple(map(int,k.split(','))):v for k,v in c.items()}
+    cF=identity.fast.compute(m,16)
     mons,x,rank,ncols,ok,nk=identity.decompose(m,14,cF)
     assert ok and rank==ncols
     rows=[(mono(*mo),frac(xi)) for mo,xi in zip(mons,x[:-1])]
@@ -30,17 +30,25 @@ def phi_table(m):
     return "\n".join(out)
 def polar_table(m,pol):
     rows=[f"$({D},{l})$ & ${a}$" for D,l,a in pol]
-    ncol=3; h=-(-len(rows)//ncol)
-    cols=[rows[i*h:(i+1)*h] for i in range(ncol)]
-    out=[f"\\noindent$m={m}$:\\nopagebreak\\\\[2pt]","{\\small\\begin{tabular}{@{}"+"@{\\qquad}".join(["r@{\\ \\ }r"]*ncol)+"@{}}"]
-    for k in range(h):
-        cells=[cols[i][k] if k<len(cols[i]) else "&" for i in range(ncol)]
-        out.append(" & ".join(cells)+" \\\\")
-    out.append("\\end{tabular}}\\par\\medskip")
+    ncol=3 if m<=13 else 2
+    size="\\small" if m<=13 else "\\scriptsize"
+    head="{"+size+"\\begin{tabular}{@{}"+"@{\\qquad}".join(["r@{\\ \\ }r"]*ncol)+"@{}}"
+    out=[f"\\noindent$m={m}$:\\nopagebreak\\\\[2pt]"]
+    # long tables are set in blocks of at most 30 lines, read column by column, so that they can break across pages
+    for b in range(0,len(rows),30*ncol):
+        blk=rows[b:b+30*ncol]; h=-(-len(blk)//ncol)
+        cols=[blk[i*h:(i+1)*h] for i in range(ncol)]
+        out.append(head)
+        for k in range(h):
+            cells=[cols[i][k] if k<len(cols[i]) else "&" for i in range(ncol)]
+            out.append(" & ".join(cells)+" \\\\")
+        out.append("\\end{tabular}}\\par")
+    out[-1]+="\\medskip"
     return "\n".join(out)
 if __name__=="__main__":
     pols=json.load(open(os.path.join(HERE,'data','polar.json')))
     print("%% phi_m tables")
     for m in (3,5,7,11,13): print(phi_table(m))
     print("%% polar tables")
-    for m in (1,2,3,5,7,11,13): print(polar_table(m,pols[str(m)]))
+    from classnum import MSET
+    for m in MSET: print(polar_table(m,pols[str(m)]))

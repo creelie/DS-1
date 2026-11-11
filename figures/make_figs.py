@@ -1,6 +1,6 @@
 """Figures of the paper.  Run from the repository root: python3 figures/make_figs.py
 Writes PNG files into paper/."""
-import os, sys, json, glob, math
+import os, sys, json, glob, math, gzip
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -11,8 +11,8 @@ sys.path.insert(0,os.path.join(ROOT,'code'))
 OUT=os.path.join(ROOT,'paper')
 plt.rcParams.update({"font.size":10,"font.family":"serif","mathtext.fontset":"cm"})
 cF={}
-for f in glob.glob(os.path.join(ROOT,'code','data','cF_*.json')):
-    m=int(f.split('_')[-1][:-5]); cF[m]={tuple(map(int,k.split(','))):v for k,v in json.load(open(f)).items()}
+for f in glob.glob(os.path.join(ROOT,'code','data','cF_*.json.gz')):
+    m=int(os.path.basename(f)[3:-8]); cF[m]={tuple(map(int,k.split(','))):v for k,v in json.load(gzip.open(f,'rt')).items()}
 def reduce(a,b,c):
     while True:
         if c>a: a,c=c,a
@@ -27,21 +27,22 @@ def Fm(m):
     F={}
     for (n,l),v in cF[m].items():
         D=4*m*n-l*l
-        if 0<=l<=m and D>0: F[D]=(-1)**(l+1)*v
+        if 0<=l<=m and D>0: F[(D,l)]=(-1)**(l+1)*v
     return F
-MS=[1,2,3,5,7,11,13]
+from classnum import MSET, DSTAR
+MS=[1,2,3,5,9,16,31]
 cols=plt.cm.viridis(np.linspace(0,0.9,len(MS)))
 
 # 1. growth of the single-centred index F_m(D) and the leading Bessel term
 from flint import arb
+from fractions import Fraction as Fr
 fig,ax=plt.subplots(figsize=(6.2,3.8))
 for m,c in zip(MS,cols):
     F=Fm(m)
-    red={4*m*n-l*l for (n,l) in cF[m] if 0<=l<=m and n>=m}   # discriminants of reduced charges
-    Ds=sorted(D for D in F if D<=1000 and D in red)
-    ax.plot(Ds,[math.log10(float(F[D])) for D in Ds],'.',ms=2.2,color=c,label=f"$m={m}$")
+    pts=sorted((4*m*n-l*l,l) for (n,l) in cF[m] if 0<=l<=m and n>=m and 0<4*m*n-l*l<=7200)   # reduced charges
+    ax.plot([D for D,l in pts],[math.log10(float(F[(D,l)])) for D,l in pts],'.',ms=1.2,color=c,label=f"$m={m}$")
     al=math.pi*math.sqrt((m+4)/m); nu=11.5
-    xs=np.linspace(20,1000,300)
+    xs=np.linspace(max(20,3*m*m),7200,300)
     T=[math.log10(2*math.pi/math.sqrt(2*m)*(m+2))+ (nu/2)*math.log10(m*(m+4)/x)+ float((arb(al)*arb(x).sqrt()).bessel_i(arb(nu)).log().mid())/math.log(10) for x in xs]
     ax.plot(xs,T,'-',lw=0.7,color=c)
 ax.set_xlabel("discriminant $D=4mn-l^2$"); ax.set_ylabel(r"$\log_{10}F_m(D)$")
@@ -52,29 +53,31 @@ fig.tight_layout(); fig.savefig(os.path.join(OUT,"fig_growth.png"),dpi=200); plt
 # 2. tail certificate: eps(D) against gap(D)/2
 import tail
 pols=json.load(open(os.path.join(ROOT,'code','data','polar.json')))
-DST={1:680,2:371,3:292,5:258,7:313,11:720,13:1030}
-fig,axs=plt.subplots(1,2,figsize=(7.2,3.2))
-for m,c in zip(MS,cols):
+pols={k:[(D,l,Fr(a)) for D,l,a in v] for k,v in pols.items()}
+DST=DSTAR
+fig,axs=plt.subplots(1,2,figsize=(7.2,3.4))
+cols2=plt.cm.viridis(np.linspace(0,0.95,len(MSET)))
+for m,c in zip(MSET,cols2):
     pol=[tuple(t) for t in pols[str(m)]]
-    Ds=np.arange(max(60,DST[m]//3),2*DST[m]+1,max(4,DST[m]//60))
+    Ds=np.arange(max(60,DST[m]//3),2*DST[m]+1,max(4,DST[m]//40))
     e=[];g=[]
     for D in Ds:
         TL,E1,E2,E3,gap=tail.terms(m,pol,int(D),DST[m])
         e.append(float(((E1+E2+E3)/TL).mid())); g.append(float(gap.mid())/2)
-    axs[0].semilogy(Ds,e,'-',color=c,lw=1,label=f"$m={m}$"); axs[0].semilogy(Ds,g,'--',color=c,lw=0.8)
+    axs[0].semilogy(Ds,e,'-',color=c,lw=0.8,label=f"${m}$"); axs[0].semilogy(Ds,g,'--',color=c,lw=0.6)
     axs[0].plot([DST[m]],[float(tail.ok(m,pol,DST[m])[1].mid())],'o',color=c,ms=3)
     axs[1].plot(Ds/DST[m],np.array(e)/np.array(g),'-',color=c,lw=1)
 axs[0].set_xlabel("$D$"); axs[0].set_ylabel(r"$\varepsilon_m(D)$ (solid), $\gamma_m(D)/2$ (dashed)")
-axs[0].set_ylim(1e-2,1e2); axs[0].legend(fontsize=7,frameon=False,ncol=2)
+axs[0].set_xscale('log'); axs[0].set_ylim(1e-2,1e2); axs[0].legend(fontsize=5.5,frameon=False,ncol=3,title="$m$",title_fontsize=6)
 axs[1].axhline(1,color='k',lw=0.6); axs[1].axvline(1,color='k',lw=0.6,ls=':')
 axs[1].set_xlabel(r"$D/D^*_m$"); axs[1].set_ylabel(r"$2\varepsilon_m(D)/\gamma_m(D)$"); axs[1].set_ylim(0,3)
 fig.tight_layout(); fig.savefig(os.path.join(OUT,"fig_tail.png"),dpi=200); plt.close(fig)
 
-# 3. relative margins of the fixed-J index over all charges with D <= 1000
+# 3. relative margins of the fixed-J index: all charges with D <= 1000 and 4(J+1) < D, and the least margin at each D <= 7200
 pts=[]
 for J in range(0,252):
     for D in range(1,1001):
-        if (D+J*J)%4: continue
+        if (D+J*J)%4 or 4*(J+1)>=D: continue   # otherwise d = d* (margin 1)
         P=(D+J*J)//4
         for m in range(1,P+1):
             if P%m: continue
@@ -82,16 +85,21 @@ for J in range(0,252):
             d1=dstar(n,J,m); d2=dstar(n,J+2,m)
             pts.append((D,(d1-d2)/d1,m))
 pts=np.array(pts)
-fig,ax=plt.subplots(figsize=(6.2,3.4))
-sc=ax.scatter(pts[:,0],pts[:,1],c=np.log(pts[:,2]),s=0.6,cmap="plasma",rasterized=True)
-ax.set_xlabel("$D$"); ax.set_ylabel(r"$d(n,J,m)/d^*(n,J,m)$")
-ax.axhline(0,color='k',lw=0.5); ax.set_ylim(-0.05,1.05)
-cb=fig.colorbar(sc,ax=ax); cb.set_label(r"$\log m$")
-ax.set_title(f"{len(pts)} charges, minimum ratio {pts[:,1].min():.4f}",fontsize=10)
+mins=json.load(open(os.path.join(ROOT,'code','data','margins_7200.json')))
+fig,axs=plt.subplots(1,2,figsize=(7.2,3.3),gridspec_kw={"width_ratios":[1.25,1]})
+sc=axs[0].scatter(pts[:,0],pts[:,1],c=np.log(pts[:,2]),s=0.5,cmap="plasma",rasterized=True)
+axs[0].set_xlabel("$D$"); axs[0].set_ylabel(r"$d(n,J,m)/d^*(n,J,m)$")
+axs[0].axhline(0,color='k',lw=0.5); axs[0].set_ylim(-0.05,1.05)
+cb=fig.colorbar(sc,ax=axs[0]); cb.set_label(r"$\log m$")
+axs[0].set_title(f"all {len(pts)} charges with $4(J+1)<D\\leq1000$",fontsize=9)
+Dm=np.array(sorted(int(k) for k in mins)); vm=np.array([mins[str(D)] for D in Dm])
+axs[1].plot(Dm,vm,'.',ms=0.8,color='tab:purple',rasterized=True)
+axs[1].set_xlabel("$D$"); axs[1].set_ylabel("least margin at $D$"); axs[1].set_ylim(0,1.05)
+axs[1].set_title(f"$D\\leq7200$, minimum {vm.min():.4f}",fontsize=9)
 fig.tight_layout(); fig.savefig(os.path.join(OUT,"fig_margins.png"),dpi=200); plt.close(fig)
 
 # 4. raw coefficients against the reduced prescription (m=5)
-m=5; F=Fm(m)
+m=5; F={D:v for (D,l),v in Fm(m).items()}
 fig,ax=plt.subplots(figsize=(6.2,3.2))
 rawp=[];redp=[]
 for n in range(m,40):
