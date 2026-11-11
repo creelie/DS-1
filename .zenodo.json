@@ -1,0 +1,14 @@
+{
+  "title": "Positivity of Rotating Black Hole Indices on K3: LaTeX source and verification code",
+  "upload_type": "software",
+  "description": "LaTeX source, figures and verification code for the paper \"Positivity of Rotating Black Hole Indices on K3\".",
+  "creators": [
+    {
+      "name": "Bhattacharjee, Deep",
+      "affiliation": "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, India; Formerly, University of Calcutta (Heramba Chandra College), Kolkata, India",
+      "orcid": "0000-0003-0466-750X"
+    }
+  ],
+  "license": "MIT",
+  "keywords": ["black hole microstates", "mock Jacobi forms", "Rademacher expansion"]
+}
