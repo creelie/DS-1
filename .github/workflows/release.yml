@@ -15,4 +15,5 @@ jobs:
       - name: Create the release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "${{ inputs.tag }}" --target "${{ github.sha }}" --title "${{ inputs.tag }}" --notes "Positivity of Rotating Black Hole Indices on K3: LaTeX source, figures and verification code."
+        run: |
+          gh release create "${{ inputs.tag }}" --target "${{ github.sha }}" --title "${{ inputs.tag }}" --notes "Positivity of Rotating Black Hole Indices on K3: LaTeX source, figures and verification code."
