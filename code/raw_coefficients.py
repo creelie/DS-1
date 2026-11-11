@@ -1,8 +1,8 @@
 import os
 HERE=os.path.dirname(os.path.abspath(__file__))
-import json
+import json, gzip
 for m in (1,2,3,5,7):
-    d={tuple(map(int,k.split(','))):v for k,v in json.load(open(os.path.join(HERE,'data',f'cF_{m}.json'))).items()}
+    d={tuple(map(int,k.split(','))):v for k,v in json.load(gzip.open(os.path.join(HERE,'data',f'cF_{m}.json.gz'),'rt')).items()}
     F={}
     for (n,l),v in d.items():
         D=4*m*n-l*l; F.setdefault(D,set()).add((-1)**(l+1)*v)

@@ -1,16 +1,12 @@
 # Rigorous (Arb) tail certificate.  For D >= Dstar (D in a fixed residue class mod 4m):
 #   |F_m(D) - T(D)| <= eps(D) T(D),  eps < 1/2, and eps(D)+eps(D+4) < 1 - T(D)/T(D+4).
-import json, sys
+import json, sys, os
 from flint import arb, ctx
 from fractions import Fraction as Fr
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+from classnum import lam, sigstar as sig, MSET, DSTAR as C_DSTAR
 ctx.prec=200
-P24=[1]+[0]*20
-for n in range(1,21):
-    for _ in range(24):
-        for i in range(n,21): P24[i]+=P24[i-n]
 pi=arb.pi(); nu=arb(23)/2
-def lam(m): return 648 if m==1 else P24[m+1]
-def sig(m): return 1 if m==1 else 1+m
 c0=arb(1)
 for n in range(1,60): c0*= (1-(-2*pi*n).exp())**(-24)
 c0=c0*(1+arb('1e-100'))
@@ -65,12 +61,13 @@ if __name__=="__main__":
     import os
     HERE=os.path.dirname(os.path.abspath(__file__))
     pols=json.load(open(os.path.join(HERE,'data','polar.json')))
-    DSTAR={1:680,2:371,3:292,5:258,7:313,11:720,13:1030}
+    DSTAR=C_DSTAR
+    assert sorted(DSTAR)==MSET
     allok=True
     for m,Ds in DSTAR.items():
         pol=[(D,l,a) for D,l,a in pols[str(m)]]
         r=ok(m,pol,Ds); TL,E1,E2,E3,gap=terms(m,pol,Ds)
         allok&=r[0]
         print("m",m,"D*",Ds,"eps",r[1].str(5),"gap",r[2].str(5),"E1/TL",(E1/TL).str(3),"E2/TL",(E2/TL).str(3),"E3/TL",(E3/TL).str(3),"sqrt(D*) must exceed",mono(m,pol,Ds)[1].str(4),"ok",r[0],flush=True)
-        if Ds>21: assert not ok(m,pol,Ds-1)[0] or True
+        print("   certificate at D*-1:",ok(m,pol,Ds-1)[0])
     print("tail certificate:","PASSED" if allok else "FAILED")
